@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showFullGallery, setShowFullGallery] = useState(false);
 
   const images = [
     // Baklava Bourekas
@@ -68,6 +69,21 @@ const Gallery = () => {
     { src: '/images/food/egg.JPG', alt: 'Egg', category: 'Sides' }
   ];
 
+  // Function to shuffle array and get random selection
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Get first 8 randomly selected images - memoized to prevent reshuffling on every render
+  const featuredImages = useMemo(() => {
+    return shuffleArray(images).slice(0, 8);
+  }, []);
+
   const openLightbox = (image) => {
     setSelectedImage(image);
   };
@@ -76,18 +92,30 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
+  const openFullGallery = () => {
+    setShowFullGallery(true);
+  };
+
+  const closeFullGallery = () => {
+    setShowFullGallery(false);
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === 'Escape') {
-      closeLightbox();
+      if (selectedImage) {
+        closeLightbox();
+      } else if (showFullGallery) {
+        closeFullGallery();
+      }
     }
   };
 
   React.useEffect(() => {
-    if (selectedImage) {
+    if (selectedImage || showFullGallery) {
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [selectedImage]);
+  }, [selectedImage, showFullGallery]);
 
   return (
     <section id="gallery" className="gallery-section">
@@ -95,10 +123,11 @@ const Gallery = () => {
         <h2>Gallery</h2>
         <p className="gallery-subtitle">Explore our delicious bourekas and fresh sides</p>
         
-        <div className="gallery-grid">
-          {images.map((image, index) => (
+        <div className="gallery-grid featured-grid">
+          {/* First 8 featured images */}
+          {featuredImages.map((image, index) => (
             <div 
-              key={index} 
+              key={`featured-${index}`} 
               className="gallery-item"
               onClick={() => openLightbox(image)}
             >
@@ -112,6 +141,20 @@ const Gallery = () => {
               </div>
             </div>
           ))}
+          
+          {/* 9th position - More Images button */}
+          <div 
+            className="gallery-item more-images-button"
+            onClick={openFullGallery}
+          >
+            <div className="more-images-content">
+              <div className="more-images-icon">+</div>
+              <div className="more-images-text">
+                <span className="more-images-title">More Images</span>
+                <span className="more-images-count">{images.length - 8} more photos</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {selectedImage && (
@@ -120,6 +163,38 @@ const Gallery = () => {
               <button className="lightbox-close" onClick={closeLightbox}>×</button>
               <img src={selectedImage.src} alt={selectedImage.alt} />
               <p className="lightbox-caption">{selectedImage.alt}</p>
+            </div>
+          </div>
+        )}
+
+        {showFullGallery && (
+          <div className="full-gallery-modal" onClick={closeFullGallery}>
+            <div className="full-gallery-content" onClick={(e) => e.stopPropagation()}>
+              <div className="full-gallery-header">
+                <h3>All Images</h3>
+                <button className="full-gallery-close" onClick={closeFullGallery}>×</button>
+              </div>
+              <div className="full-gallery-grid">
+                {images.map((image, index) => (
+                  <div 
+                    key={`full-${index}`} 
+                    className="full-gallery-item"
+                    onClick={() => {
+                      closeFullGallery();
+                      openLightbox(image);
+                    }}
+                  >
+                    <img 
+                      src={image.src} 
+                      alt={image.alt}
+                      loading="lazy"
+                    />
+                    <div className="full-gallery-overlay">
+                      <span className="full-gallery-category">{image.category}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

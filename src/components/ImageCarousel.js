@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 
-const ImageCarousel = () => {
+const ImageCarousel = React.memo(() => {
   const [imageLoadStates, setImageLoadStates] = useState({});
+  const isInitialized = useRef(false);
   
   // Image data - ALL food images for comprehensive carousel
   // Each image can have custom width/height to override defaults
@@ -80,8 +81,11 @@ const ImageCarousel = () => {
     return shuffled;
   };
 
-  // Use shuffled images for scattered arrangement
-  const images = shuffleArray(originalImages);
+  // Use shuffled images for scattered arrangement - memoized to prevent reshuffling on every render
+  const images = useMemo(() => shuffleArray(originalImages), []);
+
+  // Duplicate once so first half == second half; enables seamless -50% scroll - also memoized
+  const repeatedImages = useMemo(() => [...images, ...images], [images]);
 
   // Safety check
   if (!images || images.length === 0) {
@@ -92,20 +96,20 @@ const ImageCarousel = () => {
     );
   }
 
-  // Duplicate once so first half == second half; enables seamless -50% scroll
-  const repeatedImages = [...images, ...images];
-
-  // Initialize image load states
+  // Initialize image load states only once
   useEffect(() => {
-    const initialStates = {};
-    repeatedImages.forEach((_, index) => {
-      initialStates[index] = 'loading';
-    });
-    setImageLoadStates(initialStates);
-  }, []);
+    if (!isInitialized.current) {
+      const initialStates = {};
+      repeatedImages.forEach((_, index) => {
+        initialStates[index] = 'loading';
+      });
+      setImageLoadStates(initialStates);
+      isInitialized.current = true;
+    }
+  }, [repeatedImages]);
 
-  // Error handler for images
-  const handleImageError = (e, index) => {
+  // Error handler for images - memoized to prevent unnecessary re-renders
+  const handleImageError = useCallback((e, index) => {
     try {
       console.warn(`Image failed to load: ${e.target.src}`);
       setImageLoadStates(prev => ({
@@ -115,10 +119,10 @@ const ImageCarousel = () => {
     } catch (error) {
       console.error('Error handling image load failure:', error);
     }
-  };
+  }, []);
 
-  // Error handler for image load
-  const handleImageLoad = (e, index) => {
+  // Error handler for image load - memoized to prevent unnecessary re-renders
+  const handleImageLoad = useCallback((e, index) => {
     try {
       setImageLoadStates(prev => ({
         ...prev,
@@ -127,7 +131,7 @@ const ImageCarousel = () => {
     } catch (error) {
       console.error('Error handling image load success:', error);
     }
-  };
+  }, []);
 
   try {
     return (
@@ -187,6 +191,6 @@ const ImageCarousel = () => {
       </div>
     );
   }
-};
+});
 
 export default ImageCarousel;

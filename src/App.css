@@ -1439,8 +1439,8 @@
 }
 
 .carousel-slide {
-  width: calc(100% / 47); /* 47 images total, each gets equal width */
-  max-width: 560px;
+  width: 20%; /* Show 5 images at a time for better visibility */
+  max-width: 400px;
   position: relative;
   flex-shrink: 0;
   margin: 0;
@@ -1523,8 +1523,8 @@
 /* Responsive carousel */
 @media (max-width: 768px) {
   .carousel-slide {
-    width: calc(100% / 47); /* Keep same proportion on mobile */
-    max-width: 420px;
+    width: 25%; /* Show 4 images at a time on tablet */
+    max-width: 300px;
   }
 
   .carousel-track {
@@ -1534,8 +1534,8 @@
 
 @media (max-width: 480px) {
   .carousel-slide {
-    width: calc(100% / 47); /* Keep same proportion on small screens */
-    max-width: 360px;
+    width: 33.33%; /* Show 3 images at a time on mobile */
+    max-width: 250px;
   }
 
   .carousel-track {

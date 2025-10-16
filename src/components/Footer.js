@@ -14,6 +14,7 @@ const Footer = () => {
             <li><Link to="/menu">Menu</Link></li>
             <li><Link to="/our-story">Our Story</Link></li>
             <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/reviews">Reviews</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
           </ul>
           <div className="footer-social">

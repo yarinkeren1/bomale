@@ -76,7 +76,7 @@ const Reviews = () => {
             ))}
           </div>
         ) : (
-          <p className="no-reviews-message">Be the first to leave a review!</p>
+          <div className="reviews-placeholder"></div>
         )}
       </div>
     </div>

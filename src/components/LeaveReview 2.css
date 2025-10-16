@@ -1,0 +1,223 @@
+/* Leave Review Page Styles */
+.leave-review-page {
+  min-height: 100vh;
+  background: #7B3F00;
+  font-family: 'Patrick Hand SC', cursive;
+  padding: 120px 20px 40px;
+}
+
+.page-header {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+
+.back-button {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Patrick Hand SC', cursive;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(44, 62, 80, 0.2);
+}
+
+.back-button:hover {
+  background: #34495e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+}
+
+.review-form-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: 'Patrick Hand SC', cursive;
+}
+
+.form-header p {
+  font-size: 1.2rem;
+  color: #5a6c7d;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Patrick Hand SC', cursive;
+}
+
+.google-form-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.google-form-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.google-form-container iframe {
+  border: none;
+  display: block;
+  width: 100%;
+  min-height: 1062px;
+  background: white;
+}
+
+/* Custom styling for Google Form elements */
+.google-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  z-index: 1;
+}
+
+/* Loading state */
+.form-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #f39c12;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.form-loading p {
+  font-family: 'Patrick Hand SC', cursive;
+  font-size: 1.1rem;
+  color: #5a6c7d;
+  margin: 0;
+  font-weight: 400;
+}
+
+.form-note {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #f39c12;
+}
+
+.form-note p {
+  font-size: 1rem;
+  color: #5a6c7d;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Patrick Hand SC', cursive;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .leave-review-page {
+    padding: 20px 15px;
+  }
+  
+  .page-header {
+    padding: 0 10px;
+    margin-bottom: 30px;
+  }
+  
+  .back-button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .form-header {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form-header h2 {
+    font-size: 2rem;
+  }
+  
+  .form-header p {
+    font-size: 1.1rem;
+  }
+  
+  .google-form-container iframe {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leave-review-page {
+    padding: 15px 10px;
+  }
+  
+  .page-header {
+    padding: 0 5px;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .form-header {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .form-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .form-header p {
+    font-size: 1rem;
+  }
+  
+  .google-form-container iframe {
+    min-height: 500px;
+  }
+}

@@ -1,0 +1,70 @@
+/* CSS Variables for Bomalé Color Palette */
+:root {
+    --hunyadi-yellow: #D9A441;
+    --falu-red: #7E2626;
+    --dutch-white: #EFDFBB;
+    --chocolate: #7B3F00;
+    --burnt-sienna: #CE6D52;
+    --white: #FFFFFF;
+    --black: #000000;
+    --text-dark: #2C2C2C;
+    --text-light: #666666;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Coming Soon', cursive;
+}
+
+body {
+    font-family: 'Coming Soon', cursive;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--dutch-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    color: var(--falu-red);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+    font-family: 'Coming Soon', cursive;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}

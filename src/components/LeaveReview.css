@@ -158,7 +158,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .leave-review-page {
-    padding: 60px 15px 20px;
+    padding: 40px 15px 20px;
   }
   
   .page-header {
@@ -191,7 +191,7 @@
 
 @media (max-width: 480px) {
   .leave-review-page {
-    padding: 50px 10px 15px;
+    padding: 30px 10px 15px;
   }
   
   .page-header {

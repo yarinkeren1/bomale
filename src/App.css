@@ -1432,7 +1432,7 @@
 
 .carousel-track {
   display: flex;
-  animation: scroll 120s linear infinite;
+  animation: scroll 20s linear infinite;
   width: 200%; /* two copies of the image set for seamless loop */
   gap: 0; /* No gaps between images */
   align-items: center;
@@ -1528,7 +1528,7 @@
   }
 
   .carousel-track {
-    animation-duration: 90s; /* Slightly faster on mobile */
+    animation-duration: 18s; /* Much faster on tablet */
   }
 }
 
@@ -1539,7 +1539,7 @@
   }
 
   .carousel-track {
-    animation-duration: 75s; /* Even faster on small screens */
+    animation-duration: 15s; /* Much faster on mobile */
   }
 }
 

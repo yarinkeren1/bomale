@@ -5,7 +5,7 @@ const ImageCarousel = () => {
   
   // Image data - ALL food images for comprehensive carousel
   // Each image can have custom width/height to override defaults
-  const images = [
+  const originalImages = [
     // Baklava Bourekas
     { src: '/images/food/baklava-boureka-birdseye-closeup.JPG', alt: 'Baklava Boureka Closeup', title: 'Baklava Boureka' },
     { src: '/images/food/baklava-boureka-birdseye.JPG', alt: 'Baklava Boureka Birdseye', title: 'Baklava Boureka' },
@@ -69,6 +69,19 @@ const ImageCarousel = () => {
     { src: '/images/food/whipped-cream.JPG', alt: 'Whipped Cream', title: 'Whipped Cream' },
     { src: '/images/food/egg.JPG', alt: 'Egg', title: 'Egg' }
   ];
+
+  // Shuffle function to randomize image order
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Use shuffled images for scattered arrangement
+  const images = shuffleArray(originalImages);
 
   // Safety check
   if (!images || images.length === 0) {

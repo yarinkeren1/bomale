@@ -3,72 +3,71 @@ import React, { useState, useEffect } from 'react';
 const ImageCarousel = () => {
   const [imageLoadStates, setImageLoadStates] = useState({});
   
-  // Image data - staggered by type to avoid grouping
+  // Image data - ALL food images for comprehensive carousel
   // Each image can have custom width/height to override defaults
   const images = [
-    {
-      src: '/images/food/baklava-boureka-birdseye-closeup.JPG',
-      alt: 'Golden baklava boureka with flaky pastry and syrup',
-      title: 'Baklava Boureka',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/cheese-boureka-birdseye-closeup-1.JPG',
-      alt: 'Golden cheese boureka with sesame seeds',
-      title: 'Cheese Boureka',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/potato-boureka-birdseye.JPG',
-      alt: 'Golden potato boureka with flaky pastry',
-      title: 'Potato Boureka',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/nutella-boureka-birdseye-closeup.JPG',
-      alt: 'Nutella boureka with chocolate filling',
-      title: 'Nutella Boureka',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/eggplant-boureka-1-birdseye.JPG',
-      alt: 'Eggplant boureka with savory filling',
-      title: 'Eggplant Boureka',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/cheese-boureka-regular-1.JPG',
-      alt: 'Cheese boureka with golden crust',
-      title: 'Cheese Boureka Classic',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/baklava-boureka-split-birdseye.JPG',
-      alt: 'Split baklava boureka showing layers',
-      title: 'Baklava Layers',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/nutella-boureka-split-birdseye.JPG',
-      alt: 'Split nutella boureka showing chocolate filling',
-      title: 'Nutella Layers',
-      customWidth: null,
-      customHeight: null
-    },
-    {
-      src: '/images/food/cheese-boureka-split-birdseye-1.JPG',
-      alt: 'Split cheese boureka showing cheesy layers',
-      title: 'Cheese Layers',
-      customWidth: null,
-      customHeight: null
-    }
+    // Baklava Bourekas
+    { src: '/images/food/baklava-boureka-birdseye-closeup.JPG', alt: 'Baklava Boureka Closeup', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-birdseye.JPG', alt: 'Baklava Boureka Birdseye', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-closeup-1.JPG', alt: 'Baklava Boureka Closeup', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-closeup-2.JPG', alt: 'Baklava Boureka Closeup', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-regular-1.JPG', alt: 'Baklava Boureka Regular', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-regular.JPG', alt: 'Baklava Boureka Regular', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-1.JPG', alt: 'Baklava Boureka Split', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-2.JPG', alt: 'Baklava Boureka Split', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-3.JPG', alt: 'Baklava Boureka Split', title: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-birdseye.JPG', alt: 'Baklava Boureka Split Layers', title: 'Baklava Boureka' },
+    
+    // Cheese Bourekas
+    { src: '/images/food/cheese-boureka-birdseye-closeup-1.JPG', alt: 'Cheese Boureka Closeup', title: 'Cheese Boureka' },
+    { src: '/images/food/cheese-boureka-birdseye.JPG', alt: 'Cheese Boureka Birdseye', title: 'Cheese Boureka' },
+    { src: '/images/food/cheese-boureka-regular-1.JPG', alt: 'Cheese Boureka Regular', title: 'Cheese Boureka' },
+    { src: '/images/food/cheese-boureka-regular-2.JPG', alt: 'Cheese Boureka Regular', title: 'Cheese Boureka' },
+    { src: '/images/food/cheese-boureka-split-1.JPG', alt: 'Cheese Boureka Split', title: 'Cheese Boureka' },
+    { src: '/images/food/cheese-boureka-split-2.JPG', alt: 'Cheese Boureka Split', title: 'Cheese Boureka' },
+    { src: '/images/food/cheese-boureka-split-birdseye-1.JPG', alt: 'Cheese Boureka Split Layers', title: 'Cheese Boureka' },
+    
+    // Potato Bourekas
+    { src: '/images/food/potato-boureka-birdseye.JPG', alt: 'Potato Boureka Birdseye', title: 'Potato Boureka' },
+    { src: '/images/food/potato-boureka-regular-1.JPG', alt: 'Potato Boureka Regular', title: 'Potato Boureka' },
+    { src: '/images/food/potato-boureka-regular-2.JPG', alt: 'Potato Boureka Regular', title: 'Potato Boureka' },
+    
+    // Eggplant Bourekas
+    { src: '/images/food/eggplant-boureka-1-birdseye.JPG', alt: 'Eggplant Boureka Birdseye', title: 'Eggplant Boureka' },
+    { src: '/images/food/eggplant-boureka-regular-1.JPG', alt: 'Eggplant Boureka Regular', title: 'Eggplant Boureka' },
+    { src: '/images/food/eggplant-boureka-regular-2.JPG', alt: 'Eggplant Boureka Regular', title: 'Eggplant Boureka' },
+    { src: '/images/food/eggplant-boureka-split.JPG', alt: 'Eggplant Boureka Split', title: 'Eggplant Boureka' },
+    
+    // Nutella/Chocolate Bourekas
+    { src: '/images/food/nutella-boureka-birdseye-closeup.JPG', alt: 'Nutella Boureka Closeup', title: 'Nutella Boureka' },
+    { src: '/images/food/nutella-boureka-birdseye.JPG', alt: 'Nutella Boureka Birdseye', title: 'Nutella Boureka' },
+    { src: '/images/food/nutella-boureka-closeup-1.JPG', alt: 'Nutella Boureka Closeup', title: 'Nutella Boureka' },
+    { src: '/images/food/nutella-boureka-closeup-2.JPG', alt: 'Nutella Boureka Closeup', title: 'Nutella Boureka' },
+    { src: '/images/food/nutella-boureka-regular-1.JPG', alt: 'Nutella Boureka Regular', title: 'Nutella Boureka' },
+    { src: '/images/food/nutella-boureka-split-1.JPG', alt: 'Nutella Boureka Split', title: 'Nutella Boureka' },
+    { src: '/images/food/nutella-boureka-split-birdseye.JPG', alt: 'Nutella Boureka Split Layers', title: 'Nutella Boureka' },
+    { src: '/images/food/nutella-boureka-split-whippedcream-birdseye.JPG', alt: 'Nutella Boureka with Whipped Cream', title: 'Nutella Boureka' },
+    
+    // Packaging
+    { src: '/images/food/cheese-boureka-packaging-birdseye.JPG', alt: 'Cheese Boureka Packaging', title: 'Packaging' },
+    { src: '/images/food/cheese-boureka-packaging-closeup-1.JPG', alt: 'Cheese Boureka Packaging Closeup', title: 'Packaging' },
+    { src: '/images/food/cheese-boureka-packaging-closeup-2.JPG', alt: 'Cheese Boureka Packaging Closeup', title: 'Packaging' },
+    { src: '/images/food/cheese-boureka-packaging-closeup-3.JPG', alt: 'Cheese Boureka Packaging Closeup', title: 'Packaging' },
+    { src: '/images/food/cheese-boureka-packaging-regular.JPG', alt: 'Cheese Boureka Packaging Regular', title: 'Packaging' },
+    { src: '/images/food/eggplant-boureka-packaging-birdseye.JPG', alt: 'Eggplant Boureka Packaging', title: 'Packaging' },
+    { src: '/images/food/eggplant-boureka-packaging-closeup.JPG', alt: 'Eggplant Boureka Packaging Closeup', title: 'Packaging' },
+    { src: '/images/food/eggplant-boureka-pacakging-1.JPG', alt: 'Eggplant Boureka Packaging', title: 'Packaging' },
+    { src: '/images/food/potato-boureka-packaging-birdseye.JPG', alt: 'Potato Boureka Packaging', title: 'Packaging' },
+    { src: '/images/food/potato-boureka-packaging-regular.JPG', alt: 'Potato Boureka Packaging Regular', title: 'Packaging' },
+    
+    // Sides & Complements
+    { src: '/images/food/israeli-salad.JPG', alt: 'Israeli Salad', title: 'Israeli Salad' },
+    { src: '/images/food/pickles&olives.JPG', alt: 'Pickles & Olives', title: 'Pickles & Olives' },
+    { src: '/images/food/resek.JPG', alt: 'Resek', title: 'Resek' },
+    { src: '/images/food/schug.JPG', alt: 'Schug', title: 'Schug' },
+    { src: '/images/food/tchina.JPG', alt: 'Tchina', title: 'Tchina' },
+    { src: '/images/food/whipped-cream.JPG', alt: 'Whipped Cream', title: 'Whipped Cream' },
+    { src: '/images/food/egg.JPG', alt: 'Egg', title: 'Egg' }
   ];
 
   // Safety check

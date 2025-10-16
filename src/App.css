@@ -1432,14 +1432,14 @@
 
 .carousel-track {
   display: flex;
-  animation: scroll 36s linear infinite;
+  animation: scroll 120s linear infinite;
   width: 200%; /* two copies of the image set for seamless loop */
   gap: 0; /* No gaps between images */
   align-items: center;
 }
 
 .carousel-slide {
-  width: 11%; /* larger tiles */
+  width: calc(100% / 47); /* 47 images total, each gets equal width */
   max-width: 560px;
   position: relative;
   flex-shrink: 0;
@@ -1456,7 +1456,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* Move by exactly half (9 images) for perfect 123 loop */
+    transform: translateX(-50%); /* Move by exactly half (47 images) for perfect seamless loop */
   }
 }
 
@@ -1523,23 +1523,23 @@
 /* Responsive carousel */
 @media (max-width: 768px) {
   .carousel-slide {
-    width: 18%;
+    width: calc(100% / 47); /* Keep same proportion on mobile */
     max-width: 420px;
   }
 
   .carousel-track {
-    animation-duration: 30s; /* Slightly faster on mobile */
+    animation-duration: 90s; /* Slightly faster on mobile */
   }
 }
 
 @media (max-width: 480px) {
   .carousel-slide {
-    width: 26%;
+    width: calc(100% / 47); /* Keep same proportion on small screens */
     max-width: 360px;
   }
 
   .carousel-track {
-    animation-duration: 25s; /* Even faster on small screens */
+    animation-duration: 75s; /* Even faster on small screens */
   }
 }
 

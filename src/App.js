@@ -8,6 +8,8 @@ import Menu from './components/Menu';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import OurStory from './components/OurStory';
+import Reviews from './components/Reviews';
+import LeaveReview from './components/LeaveReview';
 import Footer from './components/Footer';
 
 function App() {
@@ -43,6 +45,18 @@ function App() {
           <Route path="/our-story" element={
             <>
               <OurStory />
+              <Footer />
+            </>
+          } />
+          <Route path="/reviews" element={
+            <>
+              <Reviews />
+              <Footer />
+            </>
+          } />
+          <Route path="/leave-review" element={
+            <>
+              <LeaveReview />
               <Footer />
             </>
           } />

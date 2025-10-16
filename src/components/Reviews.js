@@ -4,59 +4,65 @@ import './Reviews.css';
 
 const Reviews = () => {
   const navigate = useNavigate();
-  const [reviews, setReviews] = useState([
-    // Sample review data - you can replace this with real reviews later
-    {
-      id: 1,
-      name: "Sarah M.",
-      rating: 5,
-      text: "The spinach and feta boureka is absolutely incredible! Perfectly crispy on the outside and deliciously cheesy inside. A must-try!",
-      date: "2 days ago"
-    },
-    {
-      id: 2,
-      name: "David K.",
-      rating: 5,
-      text: "Best food truck in the area! The baklava is heavenly and the service is always friendly. Highly recommend!",
-      date: "1 week ago"
-    },
-    {
-      id: 3,
-      name: "Maria L.",
-      rating: 4,
-      text: "Love the variety of flavors. The potato boureka was amazing. Will definitely be back for more!",
-      date: "2 weeks ago"
-    },
-    {
-      id: 4,
-      name: "James R.",
-      rating: 5,
-      text: "Authentic flavors that remind me of my grandmother's cooking. The cheese boureka is out of this world!",
-      date: "3 weeks ago"
-    },
-    {
-      id: 5,
-      name: "Lisa T.",
-      rating: 5,
-      text: "Found this gem while walking downtown. The chocolate boureka is a perfect sweet treat. Amazing quality!",
-      date: "1 month ago"
-    },
-    {
-      id: 6,
-      name: "Mike C.",
-      rating: 4,
-      text: "Great food and reasonable prices. The eggplant boureka is my favorite. Friendly staff too!",
-      date: "1 month ago"
-    }
-  ]);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Load reviews from localStorage on component mount
+  // Fetch reviews from Google Sheets API
   React.useEffect(() => {
-    const savedReviews = localStorage.getItem('bomale-reviews');
-    if (savedReviews) {
-      const parsedReviews = JSON.parse(savedReviews);
-      setReviews(prevReviews => [...parsedReviews, ...prevReviews]);
-    }
+    const fetchReviews = async () => {
+      try {
+        setLoading(true);
+        
+        // Google Apps Script web app URL
+        const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbydEmV2Q0h3Q6b8Cxf6poK4NERbNifATj7dbvph4FYZvL0C13RZWTwaz2L8gadTDjP3/exec';
+        
+        const response = await fetch(GOOGLE_SHEETS_API_URL);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Transform Google Sheets data to match our review format
+        const formattedReviews = data.reviews
+          .filter(review => review.name && review.review && review.rating) // Filter out empty rows
+          .map((review, index) => ({
+            id: `google-review-${index}`,
+            name: review.name,
+            email: review.email || '',
+            rating: parseInt(review.rating) || 5,
+            review: review.review,
+            foodItem: review.foodItem || '',
+            date: new Date(review.timestamp || Date.now()).toLocaleDateString()
+          }))
+          .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date, newest first
+        
+        setReviews(formattedReviews);
+        setError(null);
+        
+      } catch (err) {
+        console.error('Error fetching reviews:', err);
+        setError('Failed to load reviews. Please try again later.');
+        
+        // Fallback to localStorage if API fails
+        const savedReviews = localStorage.getItem('bomale-reviews');
+        if (savedReviews) {
+          const parsedReviews = JSON.parse(savedReviews);
+          setReviews(parsedReviews);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReviews();
+    
+    // Refresh reviews every 5 minutes
+    const interval = setInterval(fetchReviews, 5 * 60 * 1000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   const renderStars = (rating) => {
@@ -76,35 +82,70 @@ const Reviews = () => {
 
   return (
     <div className="reviews-container">
-      <div className="reviews-header">
-        <h1>Customer Reviews</h1>
-        <p>See what our amazing customers are saying about BOMA'LE</p>
-      </div>
+      {loading && (
+        <div className="loading-section">
+          <div className="loading-spinner"></div>
+          <p>Loading reviews...</p>
+        </div>
+      )}
       
-      <div className="reviews-grid">
-        {reviews.map((review) => (
-          <div key={review.id} className="review-card">
-            <div className="review-header">
-              <h3>{review.name}</h3>
-              <div className="review-rating">
-                {renderStars(review.rating)}
-                <span className="review-date">{review.date}</span>
+      {error && (
+        <div className="error-section">
+          <p>{error}</p>
+          <button onClick={() => window.location.reload()} className="btn btn-primary">
+            Try Again
+          </button>
+        </div>
+      )}
+      
+      {!loading && !error && (
+        <div className="reviews-grid">
+          {reviews.map((review) => (
+            <div key={review.id} className="review-card">
+              <div className="review-header">
+                <h3>{review.name}</h3>
+                <div className="review-rating">
+                  {renderStars(review.rating)}
+                  <span className="review-date">{review.date}</span>
+                </div>
               </div>
+              <p className="review-text">"{review.review}"</p>
             </div>
-            <p className="review-text">"{review.text}"</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
       
       <div className="reviews-cta">
         <h2>Love Our Food?</h2>
         <p>We'd love to hear from you! Leave us a review or visit us at our food truck.</p>
         <button 
-          className="leave-review-button"
+          className="btn btn-primary"
           onClick={() => navigate('/leave-review')}
         >
           Leave a Review
         </button>
+      </div>
+      
+        <div className="other-reviews-section">
+          <h2>What's Everyone Saying?</h2>
+        {reviews.length > 0 ? (
+          <div className="reviews-grid">
+            {reviews.map((review) => (
+              <div key={review.id} className="review-card">
+                <div className="review-header">
+                  <h3>{review.name}</h3>
+                  <div className="review-rating">
+                    {renderStars(review.rating)}
+                    <span className="review-date">{review.date}</span>
+                  </div>
+                </div>
+                <p className="review-text">"{review.text}"</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="no-reviews-message">Be the first to leave a review!</p>
+        )}
       </div>
     </div>
   );

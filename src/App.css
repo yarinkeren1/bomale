@@ -297,6 +297,7 @@
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
     font-family: 'Coming Soon', cursive;
+    color: black;
 }
 
 .about-content {
@@ -1545,7 +1546,7 @@
 /* Gallery Section */
 .gallery-section {
     padding: 5rem 0;
-    background-color: var(--white);
+    background-color: #EFDFBB;
 }
 
 .gallery-section h2 {

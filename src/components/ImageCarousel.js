@@ -7,44 +7,65 @@ const ImageCarousel = () => {
   // Each image can have custom width/height to override defaults
   const images = [
     {
-      src: '/images/food/baklava-1.JPG',
-      alt: 'Golden baklava pastries drizzled with syrup and topped with pistachios',
-      title: 'Traditional Baklava',
-      customWidth: null,  // null = use default
-      customHeight: null  // null = use default
-    },
-    {
-      src: '/images/food/cheese-2.JPG',
-      alt: 'Golden cheese bourekas with sesame seeds',
-      title: 'Cheese Bourekas',
+      src: '/images/food/baklava-boureka-birdseye-closeup.JPG',
+      alt: 'Golden baklava boureka with flaky pastry and syrup',
+      title: 'Baklava Boureka',
       customWidth: null,
       customHeight: null
     },
     {
-      src: '/images/food/cheese-1.JPG',
-      alt: 'Cheese bourekas with flaky pastry layers',
-      title: 'Cheese Bourekas Classic',
+      src: '/images/food/cheese-boureka-birdseye-closeup-1.JPG',
+      alt: 'Golden cheese boureka with sesame seeds',
+      title: 'Cheese Boureka',
       customWidth: null,
       customHeight: null
     },
     {
-      src: '/images/food/chocolate-1.JPG',
-      alt: 'Chocolate pastry with hazelnuts and chocolate drizzle',
-      title: 'Chocolate Pastry',
+      src: '/images/food/potato-boureka-birdseye.JPG',
+      alt: 'Golden potato boureka with flaky pastry',
+      title: 'Potato Boureka',
       customWidth: null,
       customHeight: null
     },
     {
-      src: '/images/food/baklava-2.JPG',
-      alt: 'Syrupy baklava pieces with chopped pistachios',
-      title: 'Pistachio Baklava',
+      src: '/images/food/nutella-boureka-birdseye-closeup.JPG',
+      alt: 'Nutella boureka with chocolate filling',
+      title: 'Nutella Boureka',
       customWidth: null,
       customHeight: null
     },
     {
-      src: '/images/food/chocolate-2.JPG',
-      alt: 'Chocolate pastry with whipped cream and nuts',
-      title: 'Chocolate Dessert',
+      src: '/images/food/eggplant-boureka-1-birdseye.JPG',
+      alt: 'Eggplant boureka with savory filling',
+      title: 'Eggplant Boureka',
+      customWidth: null,
+      customHeight: null
+    },
+    {
+      src: '/images/food/cheese-boureka-regular-1.JPG',
+      alt: 'Cheese boureka with golden crust',
+      title: 'Cheese Boureka Classic',
+      customWidth: null,
+      customHeight: null
+    },
+    {
+      src: '/images/food/baklava-boureka-split-birdseye.JPG',
+      alt: 'Split baklava boureka showing layers',
+      title: 'Baklava Layers',
+      customWidth: null,
+      customHeight: null
+    },
+    {
+      src: '/images/food/nutella-boureka-split-birdseye.JPG',
+      alt: 'Split nutella boureka showing chocolate filling',
+      title: 'Nutella Layers',
+      customWidth: null,
+      customHeight: null
+    },
+    {
+      src: '/images/food/cheese-boureka-split-birdseye-1.JPG',
+      alt: 'Split cheese boureka showing cheesy layers',
+      title: 'Cheese Layers',
       customWidth: null,
       customHeight: null
     }

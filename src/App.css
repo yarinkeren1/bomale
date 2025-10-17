@@ -1717,33 +1717,33 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
+    background: none;
     border: none;
     color: var(--white);
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
     cursor: pointer;
-    padding: 1rem;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    padding: 0;
+    width: auto;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
+    transition: color 0.3s ease;
     z-index: 1002;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .lightbox-nav:hover {
-    background: rgba(0, 0, 0, 0.9);
+    color: var(--hunyadi-yellow);
 }
 
 .lightbox-prev {
-    left: 2rem;
+    left: -5rem;
 }
 
 .lightbox-next {
-    right: 2rem;
+    right: -5rem;
 }
 
 .lightbox-close {

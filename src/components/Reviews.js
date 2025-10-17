@@ -17,9 +17,9 @@ const Reviews = () => {
     } else if (filename.includes('baklava-boureka')) {
       return 'Baklava';
     } else if (filename.includes('potato-boureka')) {
-      return 'Potato';
+      return 'Mashed Potatoes + Caramelized Onion';
     } else if (filename.includes('eggplant-boureka')) {
-      return 'Eggplant';
+      return 'Roasted Eggplant + Za\'atar and Tahini';
     } else if (filename.includes('nutella-boureka')) {
       return 'Nutella';
     } else if (filename.includes('egg')) {

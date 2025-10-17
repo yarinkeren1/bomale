@@ -8,6 +8,39 @@ const Reviews = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showFullGallery, setShowFullGallery] = useState(false);
 
+  // Function to get menu item name from image filename
+  const getMenuItemName = (imageSrc) => {
+    const filename = imageSrc.split('/').pop().toLowerCase();
+    
+    if (filename.includes('cheese-boureka')) {
+      return 'Feta + Cheese';
+    } else if (filename.includes('baklava-boureka')) {
+      return 'Baklava';
+    } else if (filename.includes('potato-boureka')) {
+      return 'Potato';
+    } else if (filename.includes('eggplant-boureka')) {
+      return 'Eggplant';
+    } else if (filename.includes('nutella-boureka')) {
+      return 'Nutella';
+    } else if (filename.includes('egg')) {
+      return 'Hard Boiled Egg';
+    } else if (filename.includes('israeli-salad')) {
+      return 'Israeli Salad';
+    } else if (filename.includes('pickles') || filename.includes('olives')) {
+      return 'Pickles & Olives';
+    } else if (filename.includes('resek')) {
+      return 'Resek';
+    } else if (filename.includes('schug')) {
+      return 'Schug';
+    } else if (filename.includes('tchina')) {
+      return 'Tchina';
+    } else if (filename.includes('whipped-cream')) {
+      return 'Whipped Cream';
+    }
+    
+    return 'Bourekas';
+  };
+
   // Image data - moved from Gallery component
   const images = [
     // Baklava Bourekas
@@ -251,6 +284,9 @@ const Reviews = () => {
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
               <button className="lightbox-close" onClick={closeLightbox}>×</button>
               <img src={selectedImage.src} alt={selectedImage.alt} />
+              <div className="lightbox-menu-item">
+                {getMenuItemName(selectedImage.src)}
+              </div>
             </div>
           </div>
         )}

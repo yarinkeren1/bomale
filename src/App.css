@@ -1703,6 +1703,16 @@
     border-radius: 0;
 }
 
+.lightbox-menu-item {
+    text-align: center;
+    margin-top: 1rem;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
 .lightbox-close {
     position: fixed;
     top: 10px;

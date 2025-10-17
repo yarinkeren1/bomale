@@ -25,6 +25,27 @@ const Reviews = () => {
       rating: 5,
       item: 'limonana and cheese bourekas',
       review: 'I grew up eating bourekas all the time and this place really brings me back, will for sure be back'
+    },
+    {
+      id: 4,
+      name: 'May',
+      rating: 5,
+      item: 'bourekas',
+      review: 'Like no other Borekas I tried, tastes delicious, not greasy, highly recommend'
+    },
+    {
+      id: 5,
+      name: 'Alona',
+      rating: 5,
+      item: 'bourekas',
+      review: 'Boma\'le is the best burekas ! I love the crunch , unique and warm taste of home  , fresh made and baked .  Perfect buffet set up , excellent  service ! Thank you it was a joy !!!'
+    },
+    {
+      id: 6,
+      name: 'Amy',
+      rating: 5,
+      item: 'bourekas and limonana',
+      review: 'Such delicious bourekas wow ! Especially with all the sides, the combinations are so good and go very well together. And the Limonana was my favorite drink so refreshing!'
     }
   ]);
   const [selectedImage, setSelectedImage] = useState(null);

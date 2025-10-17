@@ -1547,6 +1547,9 @@
 .gallery-section {
     padding: 5rem 0;
     background-color: #EFDFBB;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .gallery-section h2 {

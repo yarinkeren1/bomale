@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Menu = () => {
   const menuData = {
@@ -96,6 +96,142 @@ const Menu = () => {
     ]
   };
 
+  // Image data from Reviews component
+  const images = [
+    // Baklava Bourekas
+    { src: '/images/food/baklava-boureka-birdseye-closeup.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-birdseye.JPG', alt: 'Baklava Boureka Birdseye', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-closeup-1.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-closeup-2.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-regular-1.JPG', alt: 'Baklava Boureka Regular', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-regular.JPG', alt: 'Baklava Boureka Regular', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-split-1.JPG', alt: 'Baklava Boureka Split', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-split-2.JPG', alt: 'Baklava Boureka Split', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-split-3.JPG', alt: 'Baklava Boureka Split', category: 'Baklava' },
+    { src: '/images/food/baklava-boureka-split-birdseye.JPG', alt: 'Baklava Boureka Split Layers', category: 'Baklava' },
+    
+    // Cheese Bourekas
+    { src: '/images/food/cheese-boureka-birdseye-closeup-1.JPG', alt: 'Cheese Boureka Closeup', category: 'Cheese' },
+    { src: '/images/food/cheese-boureka-birdseye.JPG', alt: 'Cheese Boureka Birdseye', category: 'Cheese' },
+    { src: '/images/food/cheese-boureka-regular-1.JPG', alt: 'Cheese Boureka Regular', category: 'Cheese' },
+    { src: '/images/food/cheese-boureka-regular-2.JPG', alt: 'Cheese Boureka Regular', category: 'Cheese' },
+    { src: '/images/food/cheese-boureka-split-1.JPG', alt: 'Cheese Boureka Split', category: 'Cheese' },
+    { src: '/images/food/cheese-boureka-split-2.JPG', alt: 'Cheese Boureka Split', category: 'Cheese' },
+    { src: '/images/food/cheese-boureka-split-birdseye-1.JPG', alt: 'Cheese Boureka Split Layers', category: 'Cheese' },
+    
+    // Potato Bourekas
+    { src: '/images/food/potato-boureka-birdseye.JPG', alt: 'Potato Boureka Birdseye', category: 'Potato' },
+    { src: '/images/food/potato-boureka-regular-1.JPG', alt: 'Potato Boureka Regular', category: 'Potato' },
+    { src: '/images/food/potato-boureka-regular-2.JPG', alt: 'Potato Boureka Regular', category: 'Potato' },
+    
+    // Eggplant Bourekas
+    { src: '/images/food/eggplant-boureka-1-birdseye.JPG', alt: 'Eggplant Boureka Birdseye', category: 'Eggplant' },
+    { src: '/images/food/eggplant-boureka-regular-1.JPG', alt: 'Eggplant Boureka Regular', category: 'Eggplant' },
+    { src: '/images/food/eggplant-boureka-regular-2.JPG', alt: 'Eggplant Boureka Regular', category: 'Eggplant' },
+    { src: '/images/food/eggplant-boureka-split.JPG', alt: 'Eggplant Boureka Split', category: 'Eggplant' },
+    
+    // Nutella/Chocolate Bourekas
+    { src: '/images/food/nutella-boureka-regular-1.JPG', alt: 'Nutella Boureka Regular', category: 'Chocolate' },
+    { src: '/images/food/nutella-boureka-birdseye.JPG', alt: 'Nutella Boureka Birdseye', category: 'Chocolate' },
+    { src: '/images/food/nutella-boureka-birdseye-closeup.JPG', alt: 'Nutella Boureka Closeup', category: 'Chocolate' },
+    { src: '/images/food/nutella-boureka-closeup-1.JPG', alt: 'Nutella Boureka Closeup', category: 'Chocolate' },
+    { src: '/images/food/nutella-boureka-closeup-2.JPG', alt: 'Nutella Boureka Closeup', category: 'Chocolate' },
+    { src: '/images/food/nutella-boureka-split-1.JPG', alt: 'Nutella Boureka Split', category: 'Chocolate' },
+    { src: '/images/food/nutella-boureka-split-birdseye.JPG', alt: 'Nutella Boureka Split Layers', category: 'Chocolate' },
+    { src: '/images/food/nutella-boureka-split-whippedcream-birdseye.JPG', alt: 'Nutella Boureka with Whipped Cream', category: 'Chocolate' },
+    
+    // Sides & Complements
+    { src: '/images/food/israeli-salad.JPG', alt: 'Israeli Salad', category: 'Sides' },
+    { src: '/images/food/pickles&olives.JPG', alt: 'Pickles & Olives', category: 'Sides' },
+    { src: '/images/food/resek.JPG', alt: 'Resek', category: 'Sides' },
+    { src: '/images/food/schug.JPG', alt: 'Schug', category: 'Sides' },
+    { src: '/images/food/tchina.JPG', alt: 'Tchina', category: 'Sides' },
+    { src: '/images/food/whipped-cream.JPG', alt: 'Whipped Cream', category: 'Sides' },
+    { src: '/images/food/egg.JPG', alt: 'Egg', category: 'Sides' }
+  ];
+
+  // State for lightbox
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Function to get menu item name from image filename
+  const getMenuItemName = (imageSrc) => {
+    const filename = imageSrc.split('/').pop().toLowerCase();
+    
+    if (filename.includes('cheese-boureka')) {
+      return 'Feta + Ricotta';
+    } else if (filename.includes('baklava-boureka')) {
+      return 'Baklava';
+    } else if (filename.includes('potato-boureka')) {
+      return 'Mashed Potatoes + Caramelized Onions';
+    } else if (filename.includes('eggplant-boureka')) {
+      return 'Roasted Eggplant + Za\'atar and Tahini';
+    } else if (filename.includes('nutella-boureka')) {
+      return 'Nutella';
+    } else if (filename.includes('egg')) {
+      return 'Hard-Boiled Egg';
+    } else if (filename.includes('israeli-salad')) {
+      return 'Israeli salad';
+    } else if (filename.includes('pickles') || filename.includes('olives')) {
+      return 'Pickles & Olives';
+    } else if (filename.includes('resek')) {
+      return 'Resek Agvaniyot';
+    } else if (filename.includes('schug')) {
+      return 'Green Schug';
+    } else if (filename.includes('tchina')) {
+      return 'Tahini';
+    } else if (filename.includes('whipped-cream')) {
+      return 'Whipped Cream';
+    }
+    
+    return 'Bourekas';
+  };
+
+  // Function to find images by menu item name (reverse mapping)
+  const findImagesByMenuItemName = (menuItemName) => {
+    return images.filter(image => getMenuItemName(image.src) === menuItemName);
+  };
+
+  // Function to open lightbox with first matching image
+  const openImageForMenuItem = (menuItemName) => {
+    const matchingImages = findImagesByMenuItemName(menuItemName);
+    if (matchingImages.length > 0) {
+      setSelectedImage(matchingImages[0]);
+    }
+  };
+
+  // Lightbox functions
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
+
+  const getCurrentImageIndex = () => {
+    return images.findIndex(img => img.src === selectedImage.src);
+  };
+
+  const goToPreviousImage = () => {
+    const currentIndex = getCurrentImageIndex();
+    const previousIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+    setSelectedImage(images[previousIndex]);
+  };
+
+  const goToNextImage = () => {
+    const currentIndex = getCurrentImageIndex();
+    const nextIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+    setSelectedImage(images[nextIndex]);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (selectedImage) {
+      if (e.key === 'ArrowLeft') {
+        goToPreviousImage();
+      } else if (e.key === 'ArrowRight') {
+        goToNextImage();
+      }
+    }
+  };
+
   useEffect(() => {
     // Simplified animation setup without IntersectionObserver to prevent errors
     const timeoutId = setTimeout(() => {
@@ -117,6 +253,14 @@ const Menu = () => {
       clearTimeout(timeoutId);
     };
   }, []);
+
+  // Keyboard event listener for lightbox
+  useEffect(() => {
+    if (selectedImage) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [selectedImage]);
 
   const MenuCategory = ({ title, items, isSimple = false }) => {
     if (!items || !Array.isArray(items)) {
@@ -157,7 +301,13 @@ const Menu = () => {
               {menuData?.savoryBourekas && menuData.savoryBourekas.map((item, index) => (
                 <div key={index} className="menu-item">
                   <div className="menu-item-header">
-                    <h4>{item.name || 'Unnamed Item'}</h4>
+                    <h4 
+                      className="menu-item-name clickable"
+                      onClick={() => openImageForMenuItem(item.name)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {item.name || 'Unnamed Item'}
+                    </h4>
                     {item.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item.description && (
@@ -176,7 +326,13 @@ const Menu = () => {
               {menuData?.sweetBourekas && menuData.sweetBourekas.map((item, index) => (
                 <div key={index} className="menu-item">
                   <div className="menu-item-header">
-                    <h4>{item.name || 'Unnamed Item'}</h4>
+                    <h4 
+                      className="menu-item-name clickable"
+                      onClick={() => openImageForMenuItem(item.name)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {item.name || 'Unnamed Item'}
+                    </h4>
                     {item.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item.description && (
@@ -200,7 +356,13 @@ const Menu = () => {
               {menuData?.savoryComplements && menuData.savoryComplements.length > 0 && menuData.savoryComplements.map((item, index) => (
                 <div key={index} className="complement-item">
                   <div className="menu-item-header">
-                    <h4>{item?.name || 'Unnamed Item'}</h4>
+                    <h4 
+                      className="menu-item-name clickable"
+                      onClick={() => openImageForMenuItem(item.name)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {item?.name || 'Unnamed Item'}
+                    </h4>
                     {item?.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item?.description && <p className="coming-soon-text">{item.description}</p>}
@@ -214,7 +376,13 @@ const Menu = () => {
               {menuData?.sweetComplements && menuData.sweetComplements.length > 0 && menuData.sweetComplements.map((item, index) => (
                 <div key={index} className="complement-item">
                   <div className="menu-item-header">
-                    <h4>{item?.name || 'Unnamed Item'}</h4>
+                    <h4 
+                      className="menu-item-name clickable"
+                      onClick={() => openImageForMenuItem(item.name)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {item?.name || 'Unnamed Item'}
+                    </h4>
                     {item?.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item?.description && <p className="coming-soon-text">{item.description}</p>}
@@ -230,7 +398,13 @@ const Menu = () => {
               {menuData.additionalSides && menuData.additionalSides.map((side, index) => (
                 <div key={index} className="side-item">
                   <div className="menu-item-header">
-                    <h4>{side.name}</h4>
+                    <h4 
+                      className="menu-item-name clickable"
+                      onClick={() => openImageForMenuItem(side.name)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {side.name}
+                    </h4>
                     {side.price && <span className="menu-item-price">${side.price}</span>}
                   </div>
                   {side.description && <p className="coming-soon-text">{side.description}</p>}
@@ -244,7 +418,13 @@ const Menu = () => {
               {menuData.specialtyDrinks && menuData.specialtyDrinks.map((drink, index) => (
                 <div key={`specialty-${index}`} className="drink-item">
                   <div className="menu-item-header">
-                    <h5>{drink.name}</h5>
+                    <h5 
+                      className="menu-item-name clickable"
+                      onClick={() => openImageForMenuItem(drink.name)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {drink.name}
+                    </h5>
                     {drink.price && <span className="menu-item-price">${drink.price}</span>}
                   </div>
                   {drink.description && <p className="coming-soon-text">{drink.description}</p>}
@@ -253,7 +433,13 @@ const Menu = () => {
               {menuData.regularDrinks && menuData.regularDrinks.map((drink, index) => (
                 <div key={`regular-${index}`} className="drink-item">
                   <div className="menu-item-header">
-                    <h5>{drink.name}</h5>
+                    <h5 
+                      className="menu-item-name clickable"
+                      onClick={() => openImageForMenuItem(drink.name)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {drink.name}
+                    </h5>
                     {drink.price && <span className="menu-item-price">${drink.price}</span>}
                   </div>
                   {drink.options && (
@@ -274,6 +460,21 @@ const Menu = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div className="lightbox" onClick={closeLightbox}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={closeLightbox}>×</button>
+            <button className="lightbox-nav lightbox-prev" onClick={goToPreviousImage}>‹</button>
+            <button className="lightbox-nav lightbox-next" onClick={goToNextImage}>›</button>
+            <img src={selectedImage.src} alt={selectedImage.alt} />
+            <div className="lightbox-menu-item">
+              {getMenuItemName(selectedImage.src)}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

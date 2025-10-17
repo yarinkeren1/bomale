@@ -237,21 +237,6 @@ const Reviews = () => {
 
   return (
     <div className="reviews-container">
-      <div className="reviews-grid">
-        {reviews.map((review) => (
-          <div key={review.id} className="review-card">
-            <div className="review-header">
-              <h3>{review.name}</h3>
-              <div className="review-rating">
-                {renderStars(review.rating)}
-                <span className="review-date">{review.date}</span>
-              </div>
-            </div>
-            <p className="review-text">"{review.review}"</p>
-          </div>
-        ))}
-      </div>
-      
       <div className="other-reviews-section">
         <h2>What's Everyone Saying?</h2>
         {reviews.length > 0 ? (

@@ -304,7 +304,8 @@ const Reviews = () => {
           >
             <div className="more-images-content">
               <div className="more-images-text">
-                + (row down) more images
+                <div className="more-images-plus">+</div>
+                <div className="more-images-label">more images</div>
               </div>
             </div>
           </div>

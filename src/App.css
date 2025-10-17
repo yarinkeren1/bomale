@@ -1605,11 +1605,26 @@
 }
 
 .more-images-text {
-    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.more-images-plus {
+    font-size: 4rem;
     font-weight: 700;
     font-family: 'Amatic SC', cursive;
-    line-height: 1.2;
-    text-align: center;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.more-images-label {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Amatic SC', cursive;
+    line-height: 1;
 }
 
 .more-images-count {

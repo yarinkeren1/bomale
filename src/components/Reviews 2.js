@@ -251,7 +251,6 @@ const Reviews = () => {
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
               <button className="lightbox-close" onClick={closeLightbox}>×</button>
               <img src={selectedImage.src} alt={selectedImage.alt} />
-              <p className="lightbox-caption">{selectedImage.alt}</p>
             </div>
           </div>
         )}

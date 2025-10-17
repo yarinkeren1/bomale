@@ -1799,7 +1799,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--dutch-white);
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 2000;
     cursor: pointer;
     overflow-y: auto;
@@ -1838,7 +1838,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
-    padding: 2rem;
+    padding: 5rem 2rem 2rem 2rem;
     max-height: none;
     overflow-y: visible;
     min-height: 100vh;

@@ -7,6 +7,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showFullGallery, setShowFullGallery] = useState(false);
+  const [openedFromFullGallery, setOpenedFromFullGallery] = useState(false);
 
   // Function to get menu item name from image filename
   const getMenuItemName = (imageSrc) => {
@@ -148,12 +149,44 @@ const Reviews = () => {
     setShowFullGallery(false);
   };
 
+  const getCurrentImageIndex = () => {
+    return images.findIndex(img => img.src === selectedImage.src);
+  };
+
+  const goToPreviousImage = () => {
+    const currentIndex = getCurrentImageIndex();
+    const previousIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+    setSelectedImage(images[previousIndex]);
+  };
+
+  const goToNextImage = () => {
+    const currentIndex = getCurrentImageIndex();
+    const nextIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+    setSelectedImage(images[nextIndex]);
+  };
+
+  const closeLightboxFromFullGallery = () => {
+    setSelectedImage(null);
+    setOpenedFromFullGallery(false);
+    setShowFullGallery(true);
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === 'Escape') {
       if (selectedImage) {
-        closeLightbox();
+        if (openedFromFullGallery) {
+          closeLightboxFromFullGallery();
+        } else {
+          closeLightbox();
+        }
       } else if (showFullGallery) {
         closeFullGallery();
+      }
+    } else if (selectedImage) {
+      if (e.key === 'ArrowLeft') {
+        goToPreviousImage();
+      } else if (e.key === 'ArrowRight') {
+        goToNextImage();
       }
     }
   };
@@ -280,9 +313,11 @@ const Reviews = () => {
         </div>
 
         {selectedImage && (
-          <div className="lightbox" onClick={closeLightbox}>
+          <div className="lightbox" onClick={openedFromFullGallery ? closeLightboxFromFullGallery : closeLightbox}>
             <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-              <button className="lightbox-close" onClick={closeLightbox}>×</button>
+              <button className="lightbox-close" onClick={openedFromFullGallery ? closeLightboxFromFullGallery : closeLightbox}>×</button>
+              <button className="lightbox-nav lightbox-prev" onClick={goToPreviousImage}>‹</button>
+              <button className="lightbox-nav lightbox-next" onClick={goToNextImage}>›</button>
               <img src={selectedImage.src} alt={selectedImage.alt} />
               <div className="lightbox-menu-item">
                 {getMenuItemName(selectedImage.src)}
@@ -301,6 +336,7 @@ const Reviews = () => {
                     key={`full-${index}`} 
                     className="full-gallery-item"
                     onClick={() => {
+                      setOpenedFromFullGallery(true);
                       closeFullGallery();
                       openLightbox(image);
                     }}

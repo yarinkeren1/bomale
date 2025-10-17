@@ -1752,6 +1752,24 @@
     overflow: visible;
 }
 
+.full-gallery-close {
+    position: fixed;
+    top: 10px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 3rem;
+    cursor: pointer;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    z-index: 2001;
+}
+
+.full-gallery-close:hover {
+    color: var(--white);
+}
+
 
 .full-gallery-grid {
     display: grid;

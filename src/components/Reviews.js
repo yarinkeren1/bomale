@@ -257,11 +257,8 @@ const Reviews = () => {
 
         {showFullGallery && (
           <div className="full-gallery-modal" onClick={closeFullGallery}>
+            <button className="full-gallery-close" onClick={closeFullGallery}>×</button>
             <div className="full-gallery-content" onClick={(e) => e.stopPropagation()}>
-              <div className="full-gallery-header">
-                <h3>All Images</h3>
-                <button className="full-gallery-close" onClick={closeFullGallery}>×</button>
-              </div>
               <div className="full-gallery-grid">
                 {images.map((image, index) => (
                   <div 

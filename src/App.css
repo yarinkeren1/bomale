@@ -694,13 +694,14 @@
 .locations {
     padding: 5rem 0;
     background-color: var(--dutch-white);
+    position: relative;
 }
 
 .locations h2 {
     text-align: center;
     color: var(--falu-red);
     margin-bottom: 3rem;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
 }
 
 .locations-grid {
@@ -758,6 +759,32 @@
     font-size: 1.1rem;
 }
 
+/* Coming Soon Overlay */
+.coming-soon-overlay {
+    position: absolute;
+    top: 12rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(239, 223, 187, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.coming-soon-text-large {
+    font-family: 'Amatic SC', cursive;
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--falu-red);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.2em;
+    text-align: center;
+    transform: rotate(-15deg);
+}
 
 /* Location Section */
 .location {
@@ -1952,6 +1979,10 @@
         padding: 1rem;
     }
 
+    .coming-soon-text-large {
+        font-size: 4rem;
+        letter-spacing: 0.1em;
+    }
 }
 
 /* Force refresh */

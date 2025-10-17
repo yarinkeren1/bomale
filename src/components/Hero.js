@@ -125,6 +125,10 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        {/* Coming Soon Overlay */}
+        <div className="coming-soon-overlay">
+          <div className="coming-soon-text-large">COMING SOON</div>
+        </div>
       </section>
     </>
   );

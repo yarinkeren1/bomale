@@ -1584,7 +1584,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--falu-red), var(--chocolate));
+    background: #7E2626;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
@@ -1598,25 +1598,18 @@
 .more-images-content {
     text-align: center;
     color: white;
-}
-
-.more-images-icon {
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-    font-family: 'Amatic SC', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .more-images-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.more-images-title {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     font-family: 'Amatic SC', cursive;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .more-images-count {

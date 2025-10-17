@@ -303,10 +303,8 @@ const Reviews = () => {
             onClick={openFullGallery}
           >
             <div className="more-images-content">
-              <div className="more-images-icon">+</div>
               <div className="more-images-text">
-                <span className="more-images-title">More Images</span>
-                <span className="more-images-count">{images.length - 8} more photos</span>
+                + (row down) more images
               </div>
             </div>
           </div>

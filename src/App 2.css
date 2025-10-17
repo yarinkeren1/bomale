@@ -1704,9 +1704,9 @@
 }
 
 .lightbox-close {
-    position: absolute;
-    top: -40px;
-    right: 0;
+    position: fixed;
+    top: 20px;
+    right: 20px;
     background: none;
     border: none;
     color: var(--white);
@@ -1714,11 +1714,11 @@
     cursor: pointer;
     font-family: 'Amatic SC', cursive;
     font-weight: 700;
-    transition: color 0.3s ease;
+    z-index: 1001;
 }
 
 .lightbox-close:hover {
-    color: var(--hunyadi-yellow);
+    color: var(--white);
 }
 
 .lightbox-caption {

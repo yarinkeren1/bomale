@@ -1566,7 +1566,7 @@
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 0.5rem;
     margin-top: 2rem;
 }
 
@@ -1628,7 +1628,7 @@
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 0;
     cursor: pointer;
     aspect-ratio: 1;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -1796,7 +1796,7 @@
 .full-gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 0.25rem;
     padding: 2rem;
     max-height: 70vh;
     overflow-y: auto;
@@ -1861,7 +1861,7 @@
     
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
+        gap: 0.25rem;
     }
     
     .gallery-section h2 {
@@ -1870,7 +1870,7 @@
 
     .full-gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 0.75rem;
+        gap: 0.125rem;
         padding: 1rem;
     }
 
@@ -1892,7 +1892,7 @@
     
     .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.25rem;
     }
 
     .more-images-icon {
@@ -1913,7 +1913,7 @@
 
     .full-gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 0.5rem;
+        gap: 0.125rem;
         padding: 0.75rem;
     }
 

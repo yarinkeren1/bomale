@@ -1545,11 +1545,12 @@
 
 /* Gallery Section */
 .gallery-section {
-    padding: 5rem 0;
+    padding: 5rem 0 0 0;
     background-color: #EFDFBB;
     margin: 0 -20px;
     padding-left: 20px;
     padding-right: 20px;
+    min-height: 100vh;
 }
 
 .gallery-section h2 {

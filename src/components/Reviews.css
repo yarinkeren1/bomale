@@ -2,7 +2,7 @@
 .reviews-container {
   min-height: 100vh;
   padding: 80px 20px 40px;
-  background: white;
+  background: var(--dutch-white);
   font-family: 'Patrick Hand SC', cursive;
 }
 
@@ -185,7 +185,6 @@
 .other-reviews-section {
   margin-top: 60px;
   padding-top: 40px;
-  border-top: 2px solid #e0e0e0;
 }
 
 .other-reviews-section h2 {

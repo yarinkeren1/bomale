@@ -275,7 +275,6 @@ const Menu = () => {
             <div key={index} className="menu-item">
               <div className="menu-item-header">
                 <h4>{item.name || 'Unnamed Item'}</h4>
-                {item.price && <span className="menu-item-price">${item.price}</span>}
               </div>
               {!isSimple && item.description && (
                 <p className="menu-description coming-soon-text">{item.description}</p>
@@ -308,7 +307,6 @@ const Menu = () => {
                     >
                       {item.name || 'Unnamed Item'}
                     </h4>
-                    {item.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item.description && (
                     <p className="menu-description coming-soon-text">{item.description}</p>
@@ -333,7 +331,6 @@ const Menu = () => {
                     >
                       {item.name || 'Unnamed Item'}
                     </h4>
-                    {item.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item.description && (
                     <p className="menu-description coming-soon-text">{item.description}</p>
@@ -363,7 +360,6 @@ const Menu = () => {
                     >
                       {item?.name || 'Unnamed Item'}
                     </h4>
-                    {item?.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item?.description && <p className="coming-soon-text">{item.description}</p>}
                 </div>
@@ -383,7 +379,6 @@ const Menu = () => {
                     >
                       {item?.name || 'Unnamed Item'}
                     </h4>
-                    {item?.price && <span className="menu-item-price">${item.price}</span>}
                   </div>
                   {item?.description && <p className="coming-soon-text">{item.description}</p>}
                 </div>
@@ -405,7 +400,6 @@ const Menu = () => {
                     >
                       {side.name}
                     </h4>
-                    {side.price && <span className="menu-item-price">${side.price}</span>}
                   </div>
                   {side.description && <p className="coming-soon-text">{side.description}</p>}
                 </div>
@@ -425,7 +419,6 @@ const Menu = () => {
                     >
                       {drink.name}
                     </h5>
-                    {drink.price && <span className="menu-item-price">${drink.price}</span>}
                   </div>
                   {drink.description && <p className="coming-soon-text">{drink.description}</p>}
                 </div>
@@ -440,16 +433,12 @@ const Menu = () => {
                     >
                       {drink.name}
                     </h5>
-                    {drink.price && <span className="menu-item-price">${drink.price}</span>}
                   </div>
                   {drink.options && (
                     <div className="drink-options">
                       {drink.options.map((option, optIndex) => (
                         <div key={optIndex} className="drink-option-item">
                           <span className="drink-option coming-soon-text">{typeof option === 'string' ? option : option.name}</span>
-                          {typeof option === 'object' && option.price && (
-                            <span className="drink-option-price">${option.price}</span>
-                          )}
                         </div>
                       ))}
                     </div>

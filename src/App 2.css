@@ -1737,23 +1737,19 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 2000;
     cursor: pointer;
     overflow-y: auto;
-    padding: 2rem;
+    padding: 0;
 }
 
 .full-gallery-content {
     position: relative;
-    max-width: 95%;
-    max-height: 90%;
+    width: 100%;
+    height: 100%;
     cursor: default;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
+    background: transparent;
+    overflow: visible;
 }
 
 .full-gallery-header {
@@ -1795,11 +1791,11 @@
 
 .full-gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.25rem;
-    padding: 2rem;
-    max-height: 70vh;
-    overflow-y: auto;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-height: none;
+    overflow-y: visible;
 }
 
 .full-gallery-item {
@@ -1869,9 +1865,9 @@
     }
 
     .full-gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 0.125rem;
-        padding: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 3rem 1rem;
     }
 
     .full-gallery-header {
@@ -1908,13 +1904,13 @@
     }
 
     .full-gallery-modal {
-        padding: 1rem;
+        padding: 0;
     }
 
     .full-gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 0.125rem;
-        padding: 0.75rem;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        padding: 2rem 0.75rem;
     }
 
     .full-gallery-header {

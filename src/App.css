@@ -1705,8 +1705,8 @@
 
 .lightbox-close {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 30px;
     background: none;
     border: none;
     color: var(--white);

@@ -50,7 +50,6 @@ const Navbar = () => {
           <li><Link to="/" onClick={() => handleNavClick('/')}>Home</Link></li>
           <li><Link to="/menu" onClick={() => handleNavClick('/menu')}>Menu</Link></li>
           <li><Link to="/our-story" onClick={() => handleNavClick('/our-story')}>Our Story</Link></li>
-          <li><Link to="/gallery" onClick={() => handleNavClick('/gallery')}>Gallery</Link></li>
           <li><Link to="/reviews" onClick={() => handleNavClick('/reviews')}>Reviews</Link></li>
           <li><Link to="/contact" onClick={() => handleNavClick('/contact')}>Contact Us</Link></li>
         </ul>

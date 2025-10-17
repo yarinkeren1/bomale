@@ -4,7 +4,29 @@ import './Reviews.css';
 
 const Reviews = () => {
   const navigate = useNavigate();
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([
+    {
+      id: 1,
+      name: 'Ariel',
+      rating: 5,
+      item: 'eggplant zaatar Bourekas',
+      review: 'as someone who NEVER eats eggplant, it\'s really something that\'s worth the trip'
+    },
+    {
+      id: 2,
+      name: 'Yarin',
+      rating: 5,
+      item: 'limonana',
+      review: 'coming from Israel, I always look for limonana and things that remind me of home wherever I go and I found that here'
+    },
+    {
+      id: 3,
+      name: 'Matan',
+      rating: 5,
+      item: 'limonana and cheese bourekas',
+      review: 'I grew up eating bourekas all the time and this place really brings me back, will for sure be back'
+    }
+  ]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showFullGallery, setShowFullGallery] = useState(false);
   const [openedFromFullGallery, setOpenedFromFullGallery] = useState(false);

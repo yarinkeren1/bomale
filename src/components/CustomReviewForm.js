@@ -5,6 +5,7 @@ const CustomReviewForm = ({ onCancel }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     rating: 0,
     review: '',
     foodItem: ''
@@ -47,6 +48,17 @@ const CustomReviewForm = ({ onCancel }) => {
         }
         return '';
       
+      case 'phone':
+        // Phone is optional, but if provided, must be exactly 10 digits
+        if (value.trim()) {
+          // Remove all non-digit characters for validation
+          const digitsOnly = value.replace(/\D/g, '');
+          if (digitsOnly.length === 0 || digitsOnly.length !== 10) {
+            return 'Please enter a valid phone number';
+          }
+        }
+        return '';
+      
       case 'foodItem':
         if (!value.trim()) {
           return 'Please enter what you tried';
@@ -68,25 +80,62 @@ const CustomReviewForm = ({ onCancel }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
     
-    // Only show validation errors after user has attempted to submit
-    if (hasAttemptedSubmit) {
-      const errorMessage = validateField(name, value);
-      setErrors(prev => ({
+    // Special handling for phone number - only allow digits and common formatting characters
+    if (name === 'phone') {
+      // Only allow digits, spaces, dashes, parentheses, plus sign, and dots
+      const phoneValue = value.replace(/[^\d\s\-().+]/g, '');
+      
+      // Count only the digits
+      const digitsOnly = phoneValue.replace(/\D/g, '');
+      
+      // Don't allow more than 10 digits
+      if (digitsOnly.length > 10) {
+        return; // Don't update state if more than 10 digits
+      }
+      
+      setFormData(prev => ({
         ...prev,
-        [name]: errorMessage
+        [name]: phoneValue
       }));
-    } else {
-      // Clear error when user starts typing (before any submit attempt)
-      if (errors[name]) {
+      
+      // Validate immediately for phone
+      if (hasAttemptedSubmit) {
+        const errorMessage = validateField(name, phoneValue);
         setErrors(prev => ({
           ...prev,
-          [name]: ''
+          [name]: errorMessage
         }));
+      } else {
+        if (errors[name]) {
+          setErrors(prev => ({
+            ...prev,
+            [name]: ''
+          }));
+        }
+      }
+    } else {
+      // Normal handling for other fields
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+      
+      // Only show validation errors after user has attempted to submit
+      if (hasAttemptedSubmit) {
+        const errorMessage = validateField(name, value);
+        setErrors(prev => ({
+          ...prev,
+          [name]: errorMessage
+        }));
+      } else {
+        // Clear error when user starts typing (before any submit attempt)
+        if (errors[name]) {
+          setErrors(prev => ({
+            ...prev,
+            [name]: ''
+          }));
+        }
       }
     }
   };
@@ -138,6 +187,14 @@ const CustomReviewForm = ({ onCancel }) => {
       }
     }
 
+    // Phone is optional, but if provided, must be exactly 10 digits
+    if (formData.phone.trim()) {
+      const digitsOnly = formData.phone.replace(/\D/g, '');
+      if (digitsOnly.length === 0 || digitsOnly.length !== 10) {
+        newErrors.phone = 'Please enter a valid phone number';
+      }
+    }
+
     if (formData.rating === 0) {
       newErrors.rating = 'Please select a rating';
     }
@@ -165,9 +222,22 @@ const CustomReviewForm = ({ onCancel }) => {
       const formDataToSubmit = new FormData();
       formDataToSubmit.append('entry.967507436', formData.name); // Name field
       formDataToSubmit.append('entry.1569958264', formData.email); // Email field
+      if (formData.phone) {
+        console.log('Phone number being submitted:', formData.phone);
+        formDataToSubmit.append('entry.263506034', formData.phone); // Phone field
+      }
       formDataToSubmit.append('entry.1897296947', formData.rating); // Rating field
       formDataToSubmit.append('entry.633479757', formData.foodItem); // Food item field
       formDataToSubmit.append('entry.322311345', formData.review); // Review field
+      
+      console.log('Form data being submitted:', {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        rating: formData.rating,
+        foodItem: formData.foodItem,
+        review: formData.review
+      });
 
       // Submit to Google Form
       const response = await fetch(GOOGLE_FORM_URL, {
@@ -213,6 +283,14 @@ const CustomReviewForm = ({ onCancel }) => {
       }
     }
 
+    // Phone is optional, but if provided, must be exactly 10 digits
+    if (formData.phone.trim()) {
+      const digitsOnly = formData.phone.replace(/\D/g, '');
+      if (digitsOnly.length === 0 || digitsOnly.length !== 10) {
+        newErrors.phone = 'Please enter a valid phone number';
+      }
+    }
+
     if (formData.rating === 0) {
       newErrors.rating = 'Please select a rating';
     }
@@ -249,6 +327,7 @@ const CustomReviewForm = ({ onCancel }) => {
       setFormData({
         name: '',
         email: '',
+        phone: '',
         rating: 0,
         review: '',
         foodItem: ''
@@ -308,35 +387,47 @@ const CustomReviewForm = ({ onCancel }) => {
             ✕
           </button>
         )}
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="name">Your Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className={errors.name ? 'error' : ''}
-              placeholder="Enter your name"
-            />
-            {errors.name && <span className="error-message">{errors.name}</span>}
-            {/* Debug: {JSON.stringify(errors)} */}
-          </div>
+        <div className="form-group">
+          <label htmlFor="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className={errors.name ? 'error' : ''}
+            placeholder="Enter your name"
+          />
+          {errors.name && <span className="error-message">{errors.name}</span>}
+          {/* Debug: {JSON.stringify(errors)} */}
+        </div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className={errors.email ? 'error' : ''}
-              placeholder="Enter your email"
-            />
-            {errors.email && <span className="error-message">{errors.email}</span>}
-          </div>
+        <div className="form-group">
+          <label htmlFor="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className={errors.email ? 'error' : ''}
+            placeholder="Enter your email"
+          />
+          {errors.email && <span className="error-message">{errors.email}</span>}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className={errors.phone ? 'error' : ''}
+            placeholder="Enter your phone number"
+          />
+          {errors.phone && <span className="error-message">{errors.phone}</span>}
         </div>
 
         <div className="form-group">

@@ -351,6 +351,21 @@
 .menu {
     padding: 5rem 0;
     background-color: var(--dutch-white);
+    position: relative;
+}
+
+/* Menu Hint */
+.menu-hint {
+    position: absolute;
+    top: 10rem;
+    left: 4rem;
+    font-family: 'Coming Soon', cursive;
+    font-size: 1rem;
+    color: rgba(128, 128, 128, 0.6);
+    transform: rotate(-15deg);
+    z-index: 5;
+    pointer-events: none;
+    font-style: italic;
 }
 
 .menu h2 {

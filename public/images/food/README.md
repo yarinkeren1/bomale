@@ -1,22 +1,23 @@
 # Food Images for BOMA'LE Carousel
 
-## Current Images:
+This directory contains food images for the BOMA'LE website carousel.
 
-✅ **israeli-salad.jpg** - Fresh Israeli salad with tomatoes, cucumbers, and herbs
-✅ **chocolate-baklava.jpeg** - Golden baklava pastries with pistachios and chocolate drizzle  
-✅ **eggplant.jpeg** - Savory eggplant bourekas with creamy sauce and sesame seeds
+## Note
+The actual food images have been removed from this repository to reduce file size for GitHub hosting. 
 
-## Carousel Configuration:
+## Images that should be here:
+- Baklava boureka images (various angles and closeups)
+- Cheese boureka images (regular, split, packaging views)
+- Eggplant boureka images
+- Nutella boureka images
+- Potato boureka images
+- Side dishes and complements (egg, Israeli salad, pickles & olives, etc.)
+- Sauces and condiments (schug, tchina, resek, whipped cream)
 
-The carousel is currently set up to display these three images in rotation:
-1. Israeli Salad
-2. Chocolate Baklava  
-3. Eggplant Bourekas
+## To add images back:
+1. Add the JPG files to this directory
+2. Ensure they are optimized for web (compressed, reasonable file sizes)
+3. Consider using Git LFS for large image files
 
-### File Formats:
-- Supported: JPG, JPEG, PNG, WebP
-- Current files: JPG and JPEG formats
-- Max file size: 2MB per image for optimal loading
-
-### Adding More Images:
-If you want to add more images to the carousel, update the `images` array in `/src/components/ImageCarousel.js`
+## Current placeholder:
+The website will handle missing images gracefully by showing placeholder content or skipping image carousel sections.

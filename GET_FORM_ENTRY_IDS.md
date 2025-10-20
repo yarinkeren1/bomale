@@ -15,7 +15,8 @@ To make the custom form submit to your Google Form, we need the entry IDs from y
 
 4. **Repeat for each field**:
    - Name field: entry.967507436
-   - Email field: entry.1569958264  
+   - Email field: entry.1569958264
+   - Phone field: entry.263506034 ✅
    - Rating field: entry.1897296947
    - Food item field: entry.633479757
    - Review field: entry.322311345
@@ -43,7 +44,10 @@ Once you have the entry IDs, update this line in `CustomReviewForm.js`:
 ```javascript
 // Your actual entry IDs from the form
 formDataToSubmit.append('entry.967507436', formData.name); // Name field
-formDataToSubmit.append('entry.1569958264', formData.email); // Email field  
+formDataToSubmit.append('entry.1569958264', formData.email); // Email field
+if (formData.phone) {
+  formDataToSubmit.append('entry.263506034', formData.phone); // Phone field ✅
+}
 formDataToSubmit.append('entry.1897296947', formData.rating); // Rating field
 formDataToSubmit.append('entry.633479757', formData.foodItem); // Food item field
 formDataToSubmit.append('entry.322311345', formData.review); // Review field

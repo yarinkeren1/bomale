@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Reviews.css';
+import { fetchReviewsFromSheets } from '../services/reviewsService';
 
 const Reviews = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const Reviews = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showFullGallery, setShowFullGallery] = useState(false);
   const [openedFromFullGallery, setOpenedFromFullGallery] = useState(false);
+  const [expandedReviews, setExpandedReviews] = useState({});
 
   // Function to get menu item name from image filename
   const getMenuItemName = (imageSrc) => {
@@ -166,13 +168,31 @@ const Reviews = () => {
     return shuffleArray(images).slice(0, 8);
   }, []);
 
-  // Load reviews from localStorage on component mount
-  React.useEffect(() => {
-    const savedReviews = localStorage.getItem('bomale-reviews');
-    if (savedReviews) {
-      const parsedReviews = JSON.parse(savedReviews);
-      setReviews(prevReviews => [...parsedReviews, ...prevReviews]);
-    }
+  // Load reviews from Google Sheets on component mount
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        // Try to fetch reviews from Google Sheets
+        const sheetsReviews = await fetchReviewsFromSheets(6, 5); // Get 6 latest 5-star reviews
+        
+        if (sheetsReviews && sheetsReviews.length > 0) {
+          console.log('Loaded reviews from Google Sheets:', sheetsReviews);
+          setReviews(sheetsReviews);
+        } else {
+          // Fallback: Try to load from localStorage
+          const savedReviews = localStorage.getItem('bomale-reviews');
+          if (savedReviews) {
+            const parsedReviews = JSON.parse(savedReviews);
+            setReviews(prevReviews => [...parsedReviews, ...prevReviews]);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading reviews:', error);
+        // Fallback to default reviews already in state
+      }
+    };
+
+    loadReviews();
   }, []);
 
   // Gallery functions
@@ -256,6 +276,21 @@ const Reviews = () => {
     );
   };
 
+  // Function to check if review needs truncation (we'll use CSS for the actual truncation)
+  const isReviewTruncated = (text) => {
+    if (!text) return false;
+    // Estimate if text is long enough to need truncation (roughly 4 lines)
+    return text.length > 160;
+  };
+
+  // Function to toggle review expansion
+  const toggleReviewExpansion = (reviewId) => {
+    setExpandedReviews(prev => ({
+      ...prev,
+      [reviewId]: !prev[reviewId]
+    }));
+  };
+
   return (
     <div className="reviews-container">
       <div className="reviews-cta">
@@ -273,18 +308,33 @@ const Reviews = () => {
         <h2>What's Everyone Saying?</h2>
         {reviews.length > 0 ? (
           <div className="reviews-grid">
-            {reviews.map((review) => (
-              <div key={review.id} className="review-card">
-                <div className="review-header">
-                  <h3>{review.name}</h3>
-                  <div className="review-rating">
-                    {renderStars(review.rating)}
-                    <span className="review-date">{review.date}</span>
+            {reviews.map((review) => {
+              const isExpanded = expandedReviews[review.id];
+              const isTruncated = isReviewTruncated(review.review);
+              
+              return (
+                <div key={review.id} className="review-card">
+                  <div className="review-header">
+                    <h3>{review.name}</h3>
+                    <div className="review-rating">
+                      {renderStars(review.rating)}
+                      <span className="review-date">{review.date}</span>
+                    </div>
+                  </div>
+                  <div className="review-text">
+                    <p className={isTruncated && !isExpanded ? 'review-text-truncated' : ''}>"{review.review}"</p>
+                    {isTruncated && (
+                      <button 
+                        className="read-more-btn"
+                        onClick={() => toggleReviewExpansion(review.id)}
+                      >
+                        {isExpanded ? 'Read Less' : 'Read More'}
+                      </button>
+                    )}
                   </div>
                 </div>
-                <p className="review-text">"{review.review}"</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <div className="reviews-placeholder"></div>

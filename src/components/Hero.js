@@ -75,7 +75,7 @@ const Hero = () => {
           <div className="what-is-content">
             <h2>What is BOMA'LE?</h2>
             <p>BOMA'LE is a modern take on Israeli bourekas. Traditionally, bourekas is a flaky, golden pastry filled with savory ingredients that's been a staple of Middle Eastern cuisine for ages.</p>
-            <p>Our bourekas are handcrafted daily using honed in techniques, from dough to filling, all of our products are made with precision. Each bite delivers the perfect balance of crispy, buttery pastry and flavorful fillings that celebrate both tradition and innovation.</p>
+            <p>Our bourekas are handcrafted using honed in techniques, from dough to filling, all of our products are made from scratch with delicious precision. Each bite delivers the perfect balance of crispy, soft pastry and flavorful fillings that celebrate both tradition and innovation.</p>
             <p>Whether you're discovering bourekas for the first time or grew up with them, BOMA'LE brings you an authentic taste experience that's made to share. <span className="brand-phrase coming-soon-text">Or not.</span></p>
           </div>
           

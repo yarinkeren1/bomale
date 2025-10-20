@@ -2000,4 +2000,128 @@
     }
 }
 
+/* Allergen Icons Styling */
+.menu-item-icons {
+  display: flex;
+  gap: 6px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allergen-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Allergen Disclaimer Section */
+.allergen-disclaimer {
+  margin-top: -22rem;
+  padding: 2rem;
+  background-color: var(--dutch-white);
+  border-radius: 12px;
+}
+
+.disclaimer-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--falu-red);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.allergen-disclaimer h4 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--falu-red);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.icon-legend {
+  margin-bottom: 2rem;
+}
+
+.legend-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Coming Soon', cursive;
+  font-size: 1rem;
+  color: var(--dark-brown);
+}
+
+.legend-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.bourekas-allergen-info {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.bourekas-contains-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bourekas-contains-line h4 {
+  margin: 0;
+  font-family: 'Amatic SC', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--falu-red);
+}
+
+.bourekas-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.allergy-notice {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(139, 0, 0, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid var(--falu-red);
+}
+
+.allergy-notice p {
+  font-family: 'Coming Soon', cursive;
+  font-size: 1rem;
+  color: var(--dark-brown);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.allergy-notice strong {
+  color: var(--falu-red);
+  font-weight: 700;
+}
+
+/* Drink Option Header Styling */
+.drink-option-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Force refresh */

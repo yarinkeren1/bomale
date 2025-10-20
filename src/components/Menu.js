@@ -4,46 +4,51 @@ const Menu = () => {
   const menuData = {
     savoryBourekas: [
       {
-        name: "Feta + Ricotta",
+        name: "Double Dairy",
         description: "A delicious mix of creamy ricotta and savory feta, lightly seasoned, baked in golden, crunchy pastry and topped with toasted sesame seeds",
         servedWith: "",
         sauceOptions: "Tahini, Garlic aioli",
         tagline: "Flaky, savory, filling. The classic done right.",
-        price: "15.95"
+        price: "15.95",
+        icons: ["sesame"]
       },
       {
-        name: "Mashed Potatoes + Caramelized Onions",
+        name: "Golden Mash",
         description: "Creamy mashed potato mixed with golden sautéed onions and a dash of black pepper, sealed in crisp pastry and topped with nigella seeds.",
         servedWith: "",
         sauceOptions: "Tahini, Garlic aioli",
         tagline: "Soft inside, bold outside.",
-        price: "15.95"
+        price: "15.95",
+        icons: ["sesame"]
       },
       {
-        name: "Roasted Eggplant + Za'atar and Tahini",
+        name: "Roasted Za'atar",
         description: "Roasted eggplant mashed with tahini, lemon, and garlic, spiced with za'atar and chili flakes. Topped with za'atar spices and a drizzle of tahini.",
         servedWith: "",
         sauceOptions: "Tahini, Garlic aioli",
         tagline: "Smoky, tangy, herby — loaded with flavor.",
-        price: "16.95"
+        price: "16.95",
+        icons: ["sesame"]
       }
     ],
     sweetBourekas: [
       {
-        name: "Baklava",
+        name: "Baklava Boureka",
         description: "A sweet blend of toasted nuts, honey, cinnamon, and a touch of orange zest. Topped with honey, crushed pistachios, and a side of rose water",
         servedWith: "",
         sauceOptions: "Rose water",
         tagline: "Sweet and crunchy — like baklava in a bourekas suit.",
-        price: "13.95"
+        price: "13.95",
+        icons: ["nuts"]
       },
       {
-        name: "Nutella",
+        name: "Chocolate Crunch",
         description: "Warm, creamy Nutella packed into flaky pastry. Topped with a decadent chocolate sauce and powdered sugar. Served with a side of whipped cream.",
         servedWith: "",
         sauceOptions: "Chocolate or vanilla",
         tagline: "Nutty and rich — a flavor we all know and love, delivered in a new way.",
-        price: "12.95"
+        price: "12.95",
+        icons: ["nuts"]
       },
       {
         name: "More flavors in the works",
@@ -51,48 +56,51 @@ const Menu = () => {
         servedWith: "",
         sauceOptions: "",
         tagline: "",
-        price: null
+        price: null,
+        icons: []
       }
     ],
     savoryComplements: [
-      { name: "Green Schug", description: "A bright cilantro–jalapeño Yemeni sauce layered with garlic, lemon, and warm spices. Fresh herbs keep it vibrant, while jalapeños bring a clean, fiery heat", price: "0.95" },
-      { name: "Resek Agvaniyot", description: "Freshly grated tomato, juicy and pulpy.", price: "0.95" },
-      { name: "Tahini", description: "Creamy sesame paste, rich and nutty, with a lemony tang.", price: "0.95" }
+      { name: "Green Schug", description: "A bright cilantro–jalapeño Yemeni sauce layered with garlic, lemon, and warm spices. Fresh herbs keep it vibrant, while jalapeños bring a clean, fiery heat", price: "0.95", icons: ["spicy"] },
+      { name: "Resek Agvaniyot", description: "Freshly grated tomato, juicy and pulpy.", price: "0.95", icons: [] },
+      { name: "Tahini", description: "Creamy sesame paste, rich and nutty, with a lemony tang.", price: "0.95", icons: ["sesame"] }
     ],
     sweetComplements: [
-      { name: "Rose Water", description: "Elegant and fragrant, with a subtle floral essence.", price: "0.95" },
-      { name: "Whipped Cream", description: "Light and airy, cooling, the perfect soft contrast to pastry.", price: "0.95" }
+      { name: "Rose Water", description: "Elegant and fragrant, with a subtle floral essence.", price: "0.95", icons: [] },
+      { name: "Whipped Cream", description: "Light and airy, cooling, the perfect soft contrast to pastry.", price: "0.95", icons: ["dairy"] }
     ],
     additionalSides: [
-      { name: "Hard-Boiled Egg", description: "Gently steam-cooked and served as a classic side", price: "0.95" },
-      { name: "Israeli salad", description: "Diced mix of juicy tomatoes, crisp cucumbers, sharp onions, and fresh parsley — tossed in lemon juice, olive oil, salt, and pepper.", price: "1.95" },
-      { name: "Pickles & Olives", description: "Mix of briny olives and traditional Israeli-style pickles.", price: "1.95" }
+      { name: "Hard-Boiled Egg", description: "Gently steam-cooked and served as a classic side", price: "0.95", icons: ["egg"] },
+      { name: "Israeli salad", description: "Diced mix of juicy tomatoes, crisp cucumbers, sharp onions, and fresh parsley — tossed in lemon juice, olive oil, salt, and pepper.", price: "1.95", icons: [] },
+      { name: "Pickles & Olives", description: "Mix of briny olives and traditional Israeli-style pickles.", price: "1.95", icons: [] }
     ],
     specialtyDrinks: [
-      { name: "Limonana", description: "Frozen lemon–mint slush with a bold citrus kick and a cool, herbal finish. Sweet, sour, and wildly refreshing", price: "6.95" }
+      { name: "Limonana", description: "Frozen lemon–mint slush with a bold citrus kick and a cool, herbal finish. Sweet, sour, and wildly refreshing", price: "6.95", icons: [] }
     ],
     regularDrinks: [
       { 
         name: "Espresso", 
+        icons: [],
         options: [
-          { name: "Single", price: "2.95" },
-          { name: "Double", price: "3.95" }
+          { name: "Single", price: "2.95", icons: [] },
+          { name: "Double", price: "3.95", icons: [] }
         ]
       },
       { 
         name: "Latte", 
+        icons: [],
         options: [
-          { name: "Whole Milk", price: "5.95" },
-          { name: "Skim Milk", price: "5.95" },
-          { name: "Almond Milk", price: "6.95" }
+          { name: "Whole Milk", price: "5.95", icons: ["dairy"] },
+          { name: "Skim Milk", price: "5.95", icons: ["dairy"] },
+          { name: "Almond Milk", price: "6.95", icons: ["nuts"] }
         ]
       },
-      { name: "Green Tea", price: "1.95" },
-      { name: "Raspberry Iced Tea", price: "3.95" },
-      { name: "Coca Cola", price: "1.95" },
-      { name: "Sprite", price: "1.95" },
-      { name: "Fiji Water", price: "2.95" },
-      { name: "Sparkling Water", price: "2.95" }
+      { name: "Green Tea", price: "1.95", icons: [] },
+      { name: "Raspberry Iced Tea", price: "3.95", icons: [] },
+      { name: "Coca Cola", price: "1.95", icons: [] },
+      { name: "Sprite", price: "1.95", icons: [] },
+      { name: "Fiji Water", price: "2.95", icons: [] },
+      { name: "Sparkling Water", price: "2.95", icons: [] }
     ]
   };
 
@@ -155,6 +163,50 @@ const Menu = () => {
 
   // State for lightbox
   const [selectedImage, setSelectedImage] = useState(null);
+
+  // Icon mapping for dietary/allergen information using actual image files
+  const getIcon = (iconType) => {
+    const iconMap = {
+      dairy: "/images/allergens/dairy.png",
+      nuts: "/images/allergens/nuts.png", 
+      sesame: "/images/allergens/sesame.png",
+      gluten: "/images/allergens/gluten.png",
+      egg: "/images/allergens/eggs.png",
+      spicy: "/images/allergens/spicy.png"
+    };
+    return iconMap[iconType] || "";
+  };
+
+  // Render icons for a menu item
+  const renderIcons = (icons) => {
+    if (!icons || icons.length === 0) return null;
+    return (
+      <div className="menu-item-icons">
+        {icons.map((icon, index) => (
+          <span key={index} className="menu-icon" title={getIconTitle(icon)}>
+            <img 
+              src={getIcon(icon)} 
+              alt={getIconTitle(icon)} 
+              className="allergen-icon"
+            />
+          </span>
+        ))}
+      </div>
+    );
+  };
+
+  // Get tooltip title for icons
+  const getIconTitle = (iconType) => {
+    const titleMap = {
+      dairy: "Contains Dairy",
+      nuts: "Contains Nuts",
+      sesame: "Contains Sesame/Nigella", 
+      gluten: "Contains Gluten",
+      egg: "Contains Egg",
+      spicy: "Spicy"
+    };
+    return titleMap[iconType] || "";
+  };
 
   // Function to get menu item name from image filename
   const getMenuItemName = (imageSrc) => {
@@ -311,6 +363,7 @@ const Menu = () => {
                     >
                       {item.name || 'Unnamed Item'}
                     </h4>
+                    {renderIcons(item.icons)}
                   </div>
                   {item.description && (
                     <p className="menu-description coming-soon-text">{item.description}</p>
@@ -335,6 +388,7 @@ const Menu = () => {
                     >
                       {item.name || 'Unnamed Item'}
                     </h4>
+                    {renderIcons(item.icons)}
                   </div>
                   {item.description && (
                     <p className="menu-description coming-soon-text">{item.description}</p>
@@ -364,6 +418,7 @@ const Menu = () => {
                     >
                       {item?.name || 'Unnamed Item'}
                     </h4>
+                    {renderIcons(item.icons)}
                   </div>
                   {item?.description && <p className="coming-soon-text">{item.description}</p>}
                 </div>
@@ -383,6 +438,7 @@ const Menu = () => {
                     >
                       {item?.name || 'Unnamed Item'}
                     </h4>
+                    {renderIcons(item.icons)}
                   </div>
                   {item?.description && <p className="coming-soon-text">{item.description}</p>}
                 </div>
@@ -404,6 +460,7 @@ const Menu = () => {
                     >
                       {side.name}
                     </h4>
+                    {renderIcons(side.icons)}
                   </div>
                   {side.description && <p className="coming-soon-text">{side.description}</p>}
                 </div>
@@ -423,6 +480,7 @@ const Menu = () => {
                     >
                       {drink.name}
                     </h5>
+                    {renderIcons(drink.icons)}
                   </div>
                   {drink.description && <p className="coming-soon-text">{drink.description}</p>}
                 </div>
@@ -437,18 +495,70 @@ const Menu = () => {
                     >
                       {drink.name}
                     </h5>
+                    {renderIcons(drink.icons)}
                   </div>
                   {drink.options && (
                     <div className="drink-options">
                       {drink.options.map((option, optIndex) => (
                         <div key={optIndex} className="drink-option-item">
-                          <span className="drink-option coming-soon-text">{typeof option === 'string' ? option : option.name}</span>
+                          <div className="drink-option-header">
+                            <span className="drink-option coming-soon-text">{typeof option === 'string' ? option : option.name}</span>
+                            {typeof option === 'object' && option.icons && renderIcons(option.icons)}
+                          </div>
                         </div>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+          
+          {/* Allergen Disclaimer Section */}
+          <div className="allergen-disclaimer">
+            <h3 className="disclaimer-title">Allergen Info</h3>
+            <div className="icon-legend">
+              <div className="legend-items">
+                <div className="legend-item">
+                  <img src="/images/allergens/dairy.png" alt="Dairy" className="legend-icon" />
+                  <span>= Contains Dairy</span>
+                </div>
+                <div className="legend-item">
+                  <img src="/images/allergens/nuts.png" alt="Nuts" className="legend-icon" />
+                  <span>= Contains Nuts</span>
+                </div>
+                <div className="legend-item">
+                  <img src="/images/allergens/sesame.png" alt="Sesame" className="legend-icon" />
+                  <span>= Contains Sesame/Nigella</span>
+                </div>
+                <div className="legend-item">
+                  <img src="/images/allergens/gluten.png" alt="Gluten" className="legend-icon" />
+                  <span>= Contains Gluten</span>
+                </div>
+                <div className="legend-item">
+                  <img src="/images/allergens/eggs.png" alt="Eggs" className="legend-icon" />
+                  <span>= Contains Egg</span>
+                </div>
+                <div className="legend-item">
+                  <img src="/images/allergens/spicy.png" alt="Spicy" className="legend-icon" />
+                  <span>= Spicy</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bourekas-allergen-info">
+              <div className="bourekas-contains-line">
+                <h4>All Bourekas Contain</h4>
+                <div className="bourekas-icons">
+                  <img src="/images/allergens/dairy.png" alt="Dairy" className="allergen-icon" />
+                  <img src="/images/allergens/gluten.png" alt="Gluten" className="allergen-icon" />
+                  <img src="/images/allergens/eggs.png" alt="Eggs" className="allergen-icon" />
+                </div>
+              </div>
+            </div>
+            
+            <div className="allergy-notice">
+              <p><strong>Please notify us of any food allergies before ordering.</strong> Our products may contain or come into contact with milk, eggs, wheat, nuts, and sesame.</p>
             </div>
           </div>
         </div>

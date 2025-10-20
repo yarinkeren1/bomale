@@ -39,7 +39,7 @@ const Menu = () => {
       },
       {
         name: "Nutella",
-        description: "Warm, creamy Nutella packed into flaky pastry. Topped with a decadent chocolate sauce and hazelnut. Served with a side of whipped cream.",
+        description: "Warm, creamy Nutella packed into flaky pastry. Topped with a decadent chocolate sauce and powdered sugar. Served with a side of whipped cream.",
         servedWith: "",
         sauceOptions: "Chocolate or vanilla",
         tagline: "Nutty and rich — a flavor we all know and love, delivered in a new way.",
@@ -56,12 +56,12 @@ const Menu = () => {
     ],
     savoryComplements: [
       { name: "Green Schug", description: "A bright cilantro–jalapeño Yemeni sauce layered with garlic, lemon, and warm spices. Fresh herbs keep it vibrant, while jalapeños bring a clean, fiery heat", price: "0.95" },
-      { name: "Resek Agvaniyot", description: "Freshly grated tomato, juicy and pulpy.\nPairs best with: Cheese boureka", price: "0.95" },
-      { name: "Tahini", description: "Creamy sesame paste, rich and nutty, with a lemony tang.\nPairs best with: Eggplant boureka", price: "0.95" }
+      { name: "Resek Agvaniyot", description: "Freshly grated tomato, juicy and pulpy.", price: "0.95" },
+      { name: "Tahini", description: "Creamy sesame paste, rich and nutty, with a lemony tang.", price: "0.95" }
     ],
     sweetComplements: [
-      { name: "Rose Water Syrup", description: "Elegant and fragrant, with a subtle floral essence.\nPairs best with: Baklava boureka", price: "0.95" },
-      { name: "Whipped Cream", description: "Light and airy, cooling, the perfect soft contrast to pastry.\nPairs best with: Nutella + hazelnut boureka", price: "0.95" }
+      { name: "Rose Water", description: "Elegant and fragrant, with a subtle floral essence.", price: "0.95" },
+      { name: "Whipped Cream", description: "Light and airy, cooling, the perfect soft contrast to pastry.", price: "0.95" }
     ],
     additionalSides: [
       { name: "Hard-Boiled Egg", description: "Gently steam-cooked and served as a classic side", price: "0.95" },

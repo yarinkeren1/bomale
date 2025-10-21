@@ -213,15 +213,15 @@ const Menu = () => {
     const filename = imageSrc.split('/').pop().toLowerCase();
     
     if (filename.includes('cheese-boureka')) {
-      return 'Feta + Ricotta';
+      return 'Double Dairy';
     } else if (filename.includes('baklava-boureka')) {
-      return 'Baklava';
+      return 'Baklava Boureka';
     } else if (filename.includes('potato-boureka')) {
-      return 'Mashed Potatoes + Caramelized Onions';
+      return 'Golden Mash';
     } else if (filename.includes('eggplant-boureka')) {
-      return 'Roasted Eggplant + Za\'atar and Tahini';
+      return 'Roasted Za\'atar';
     } else if (filename.includes('nutella-boureka')) {
-      return 'Nutella';
+      return 'Chocolate Crunch';
     } else if (filename.includes('egg')) {
       return 'Hard-Boiled Egg';
     } else if (filename.includes('israeli-salad')) {

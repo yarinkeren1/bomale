@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import OurStory from './components/OurStory';
 import Reviews from './components/Reviews';
 import LeaveReview from './components/LeaveReview';
+import TermsOfUse from './components/TermsOfUse';
 import Footer from './components/Footer';
 
 function App() {
@@ -50,6 +51,12 @@ function App() {
           <Route path="/leave-review" element={
             <>
               <LeaveReview />
+              <Footer />
+            </>
+          } />
+          <Route path="/terms-of-use" element={
+            <>
+              <TermsOfUse />
               <Footer />
             </>
           } />

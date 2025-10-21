@@ -59,27 +59,27 @@ const Reviews = () => {
     const filename = imageSrc.split('/').pop().toLowerCase();
     
     if (filename.includes('cheese-boureka')) {
-      return 'Feta + Cheese';
+      return 'Double Dairy';
     } else if (filename.includes('baklava-boureka')) {
-      return 'Baklava';
+      return 'Baklava Boureka';
     } else if (filename.includes('potato-boureka')) {
-      return 'Mashed Potatoes + Caramelized Onion';
+      return 'Golden Mash';
     } else if (filename.includes('eggplant-boureka')) {
-      return 'Roasted Eggplant + Za\'atar and Tahini';
+      return 'Roasted Za\'atar';
     } else if (filename.includes('nutella-boureka')) {
-      return 'Nutella';
+      return 'Chocolate Crunch';
     } else if (filename.includes('egg')) {
-      return 'Hard Boiled Egg';
+      return 'Hard-Boiled Egg';
     } else if (filename.includes('israeli-salad')) {
       return 'Israeli Salad';
     } else if (filename.includes('pickles') || filename.includes('olives')) {
       return 'Pickles & Olives';
     } else if (filename.includes('resek')) {
-      return 'Resek';
+      return 'Resek Agvaniyot';
     } else if (filename.includes('schug')) {
-      return 'Schug';
+      return 'Green Schug';
     } else if (filename.includes('tchina')) {
-      return 'Tchina';
+      return 'Tahini';
     } else if (filename.includes('whipped-cream')) {
       return 'Whipped Cream';
     }
@@ -89,47 +89,47 @@ const Reviews = () => {
 
   // Image data - moved from Gallery component
   const images = [
-    // Baklava Bourekas
-    { src: '/images/food/baklava-boureka-birdseye-closeup.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-birdseye.JPG', alt: 'Baklava Boureka Birdseye', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-closeup-1.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-closeup-2.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-regular-1.JPG', alt: 'Baklava Boureka Regular', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-regular.JPG', alt: 'Baklava Boureka Regular', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-split-1.JPG', alt: 'Baklava Boureka Split', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-split-2.JPG', alt: 'Baklava Boureka Split', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-split-3.JPG', alt: 'Baklava Boureka Split', category: 'Baklava' },
-    { src: '/images/food/baklava-boureka-split-birdseye.JPG', alt: 'Baklava Boureka Split Layers', category: 'Baklava' },
+    // Baklava Boureka
+    { src: '/images/food/baklava-boureka-birdseye-closeup.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-birdseye.JPG', alt: 'Baklava Boureka Birdseye', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-closeup-1.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-closeup-2.JPG', alt: 'Baklava Boureka Closeup', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-regular-1.JPG', alt: 'Baklava Boureka Regular', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-regular.JPG', alt: 'Baklava Boureka Regular', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-1.JPG', alt: 'Baklava Boureka Split', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-2.JPG', alt: 'Baklava Boureka Split', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-3.JPG', alt: 'Baklava Boureka Split', category: 'Baklava Boureka' },
+    { src: '/images/food/baklava-boureka-split-birdseye.JPG', alt: 'Baklava Boureka Split Layers', category: 'Baklava Boureka' },
     
-    // Cheese Bourekas
-    { src: '/images/food/cheese-boureka-birdseye-closeup-1.JPG', alt: 'Cheese Boureka Closeup', category: 'Cheese' },
-    { src: '/images/food/cheese-boureka-birdseye.JPG', alt: 'Cheese Boureka Birdseye', category: 'Cheese' },
-    { src: '/images/food/cheese-boureka-regular-1.JPG', alt: 'Cheese Boureka Regular', category: 'Cheese' },
-    { src: '/images/food/cheese-boureka-regular-2.JPG', alt: 'Cheese Boureka Regular', category: 'Cheese' },
-    { src: '/images/food/cheese-boureka-split-1.JPG', alt: 'Cheese Boureka Split', category: 'Cheese' },
-    { src: '/images/food/cheese-boureka-split-2.JPG', alt: 'Cheese Boureka Split', category: 'Cheese' },
-    { src: '/images/food/cheese-boureka-split-birdseye-1.JPG', alt: 'Cheese Boureka Split Layers', category: 'Cheese' },
+    // Double Dairy
+    { src: '/images/food/cheese-boureka-birdseye-closeup-1.JPG', alt: 'Double Dairy Closeup', category: 'Double Dairy' },
+    { src: '/images/food/cheese-boureka-birdseye.JPG', alt: 'Double Dairy Birdseye', category: 'Double Dairy' },
+    { src: '/images/food/cheese-boureka-regular-1.JPG', alt: 'Double Dairy Regular', category: 'Double Dairy' },
+    { src: '/images/food/cheese-boureka-regular-2.JPG', alt: 'Double Dairy Regular', category: 'Double Dairy' },
+    { src: '/images/food/cheese-boureka-split-1.JPG', alt: 'Double Dairy Split', category: 'Double Dairy' },
+    { src: '/images/food/cheese-boureka-split-2.JPG', alt: 'Double Dairy Split', category: 'Double Dairy' },
+    { src: '/images/food/cheese-boureka-split-birdseye-1.JPG', alt: 'Double Dairy Split Layers', category: 'Double Dairy' },
     
-    // Potato Bourekas
-    { src: '/images/food/potato-boureka-birdseye.JPG', alt: 'Potato Boureka Birdseye', category: 'Potato' },
-    { src: '/images/food/potato-boureka-regular-1.JPG', alt: 'Potato Boureka Regular', category: 'Potato' },
-    { src: '/images/food/potato-boureka-regular-2.JPG', alt: 'Potato Boureka Regular', category: 'Potato' },
+    // Golden Mash
+    { src: '/images/food/potato-boureka-birdseye.JPG', alt: 'Golden Mash Birdseye', category: 'Golden Mash' },
+    { src: '/images/food/potato-boureka-regular-1.JPG', alt: 'Golden Mash Regular', category: 'Golden Mash' },
+    { src: '/images/food/potato-boureka-regular-2.JPG', alt: 'Golden Mash Regular', category: 'Golden Mash' },
     
-    // Eggplant Bourekas
-    { src: '/images/food/eggplant-boureka-1-birdseye.JPG', alt: 'Eggplant Boureka Birdseye', category: 'Eggplant' },
-    { src: '/images/food/eggplant-boureka-regular-1.JPG', alt: 'Eggplant Boureka Regular', category: 'Eggplant' },
-    { src: '/images/food/eggplant-boureka-regular-2.JPG', alt: 'Eggplant Boureka Regular', category: 'Eggplant' },
-    { src: '/images/food/eggplant-boureka-split.JPG', alt: 'Eggplant Boureka Split', category: 'Eggplant' },
+    // Roasted Za'atar
+    { src: '/images/food/eggplant-boureka-1-birdseye.JPG', alt: 'Roasted Za\'atar Birdseye', category: 'Roasted Za\'atar' },
+    { src: '/images/food/eggplant-boureka-regular-1.JPG', alt: 'Roasted Za\'atar Regular', category: 'Roasted Za\'atar' },
+    { src: '/images/food/eggplant-boureka-regular-2.JPG', alt: 'Roasted Za\'atar Regular', category: 'Roasted Za\'atar' },
+    { src: '/images/food/eggplant-boureka-split.JPG', alt: 'Roasted Za\'atar Split', category: 'Roasted Za\'atar' },
     
-    // Nutella/Chocolate Bourekas
-    { src: '/images/food/nutella-boureka-birdseye-closeup.JPG', alt: 'Nutella Boureka Closeup', category: 'Chocolate' },
-    { src: '/images/food/nutella-boureka-birdseye.JPG', alt: 'Nutella Boureka Birdseye', category: 'Chocolate' },
-    { src: '/images/food/nutella-boureka-closeup-1.JPG', alt: 'Nutella Boureka Closeup', category: 'Chocolate' },
-    { src: '/images/food/nutella-boureka-closeup-2.JPG', alt: 'Nutella Boureka Closeup', category: 'Chocolate' },
-    { src: '/images/food/nutella-boureka-regular-1.JPG', alt: 'Nutella Boureka Regular', category: 'Chocolate' },
-    { src: '/images/food/nutella-boureka-split-1.JPG', alt: 'Nutella Boureka Split', category: 'Chocolate' },
-    { src: '/images/food/nutella-boureka-split-birdseye.JPG', alt: 'Nutella Boureka Split Layers', category: 'Chocolate' },
-    { src: '/images/food/nutella-boureka-split-whippedcream-birdseye.JPG', alt: 'Nutella Boureka with Whipped Cream', category: 'Chocolate' },
+    // Chocolate Crunch
+    { src: '/images/food/nutella-boureka-birdseye-closeup.JPG', alt: 'Chocolate Crunch Closeup', category: 'Chocolate Crunch' },
+    { src: '/images/food/nutella-boureka-birdseye.JPG', alt: 'Chocolate Crunch Birdseye', category: 'Chocolate Crunch' },
+    { src: '/images/food/nutella-boureka-closeup-1.JPG', alt: 'Chocolate Crunch Closeup', category: 'Chocolate Crunch' },
+    { src: '/images/food/nutella-boureka-closeup-2.JPG', alt: 'Chocolate Crunch Closeup', category: 'Chocolate Crunch' },
+    { src: '/images/food/nutella-boureka-regular-1.JPG', alt: 'Chocolate Crunch Regular', category: 'Chocolate Crunch' },
+    { src: '/images/food/nutella-boureka-split-1.JPG', alt: 'Chocolate Crunch Split', category: 'Chocolate Crunch' },
+    { src: '/images/food/nutella-boureka-split-birdseye.JPG', alt: 'Chocolate Crunch Split Layers', category: 'Chocolate Crunch' },
+    { src: '/images/food/nutella-boureka-split-whippedcream-birdseye.JPG', alt: 'Chocolate Crunch with Whipped Cream', category: 'Chocolate Crunch' },
     
     // Packaging
     { src: '/images/food/cheese-boureka-packaging-birdseye.JPG', alt: 'Cheese Boureka Packaging', category: 'Packaging' },

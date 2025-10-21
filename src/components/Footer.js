@@ -23,7 +23,10 @@ const Footer = () => {
               </svg>
             </a>
           </div>
-          <p>&copy; 2025 BOMA'LE</p>
+          <div className="footer-bottom">
+            <p>&copy; 2025 Boma'le Bourekas</p>
+            <Link to="/terms-of-use" className="terms-link">Terms of Use & Privacy Policy</Link>
+          </div>
         </div>
       </div>
     </footer>
